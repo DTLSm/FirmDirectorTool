@@ -20,13 +20,23 @@ keys.
 
 The cache is deliberately *not* invalidated. EDGAR accessions are immutable
 once filed; a changed filing gets a new accession number. Index files are the
-one exception — a daily index for today is still growing — which is why
-:meth:`RawCache.put` is a separate call the client can skip.
+one exception — a daily index for today is still growing — which is why the
+client can be told to distrust a cached copy on a per-request basis.
 """
 
 from __future__ import annotations
 
+import os
+import tempfile
 from pathlib import Path
+from urllib.parse import quote, urlsplit
+
+#: Stands in for the filename when a URL names a directory rather than a file.
+DIRECTORY_INDEX = "index.html"
+
+#: Percent-encoded "?", so a query string becomes part of the filename instead
+#: of a path separator.
+QUERY_MARKER = "%3F"
 
 
 class RawCache:
@@ -42,43 +52,69 @@ class RawCache:
         self.root = Path(root)
 
     def path_for(self, url: str) -> Path:
-        """Map a URL to the file that holds (or would hold) its body.
+        """Map a URL to the file that holds (or would hold) its body."""
+        parts = urlsplit(url)
+        if not parts.netloc:
+            raise ValueError(f"cannot cache a URL with no host: {url!r}")
 
-        Implementation notes:
+        path = parts.path
+        if not path or path.endswith("/"):
+            # A directory URL has no filename of its own. Inventing one
+            # deterministically beats creating a directory here and colliding
+            # with a real file later.
+            path += DIRECTORY_INDEX
+        if parts.query:
+            # ".../submissions/CIK0000320193.json" and the same URL with "?v=2"
+            # are different resources and must not share a file. The fragment
+            # is dropped: servers never see it.
+            path += QUERY_MARKER + quote(parts.query, safe="")
 
-        * Parse with :func:`urllib.parse.urlsplit`; use ``netloc`` and ``path``
-          and ignore the fragment.
-        * A query string must not be dropped — ``.../index.json?foo`` and
-          ``.../index.json`` are different resources. Append it in a form that
-          is legal in a filename (percent-encoding the separator is enough).
-        * Refuse to escape ``root``. A path containing ``..`` segments, or an
-          absolute-looking ``netloc``, must not produce a path outside
-          ``self.root``; resolve and check, and raise :class:`ValueError` if it
-          would. EDGAR will not send such a URL, but the cache root is going to
-          be a mounted volume and later a storage account, and a cache that can
-          be talked into writing anywhere is a real vulnerability.
-        * A URL ending in ``/`` has no filename. Pick a deterministic one
-          (``index.html`` is conventional) rather than creating a directory and
-          failing later.
-        """
-        raise NotImplementedError
+        candidate = self.root / parts.netloc / path.lstrip("/")
+        normalised = Path(os.path.normpath(candidate))
+
+        # A URL path may contain ".." segments. EDGAR will not send one, but the
+        # cache root is a mounted volume today and a storage account tomorrow,
+        # and a cache that can be talked into writing outside its root is a real
+        # vulnerability. normpath collapses the traversal; resolve() then
+        # follows any symlinks before the containment check, so neither trick
+        # gets through.
+        if not normalised.resolve().is_relative_to(self.root.resolve()):
+            raise ValueError(f"{url!r} maps outside the cache root {self.root}")
+        return normalised
 
     def get(self, url: str) -> bytes | None:
         """Return the cached body, or ``None`` if it has not been fetched.
 
-        Must not raise when the cache is cold or the root does not exist yet —
-        a miss is the normal case on a fresh checkout.
+        A cold cache is the normal case on a fresh checkout, so a miss is a
+        return value rather than an exception. A URL that maps outside the root
+        still raises: that is a bug, not a miss.
         """
-        raise NotImplementedError
+        try:
+            return self.path_for(url).read_bytes()
+        except (FileNotFoundError, NotADirectoryError, IsADirectoryError):
+            return None
 
     def put(self, url: str, body: bytes) -> Path:
         """Write ``body`` and return the path written.
 
-        Create parent directories as needed. Write atomically: a crash halfway
-        through a multi-megabyte submission file must not leave a truncated
-        document that a later run happily treats as a cache hit. Write to a
-        temporary file in the same directory and :func:`os.replace` it into
-        place — ``os.replace`` is atomic within a filesystem, ``shutil.move``
-        across filesystems is not.
+        The write is atomic. A crash halfway through a multi-megabyte
+        submission file must not leave a truncated document that a later run
+        treats as a cache hit — that failure is silent, survives restarts, and
+        looks like a parser bug. Writing to a temporary file in the *same*
+        directory and calling :func:`os.replace` avoids it: ``os.replace`` is
+        atomic within a filesystem, where :func:`shutil.move` across
+        filesystems is not.
         """
-        raise NotImplementedError
+        path = self.path_for(url)
+        path.parent.mkdir(parents=True, exist_ok=True)
+
+        handle, temporary_name = tempfile.mkstemp(dir=path.parent, prefix=".tmp", suffix=".part")
+        temporary = Path(temporary_name)
+        try:
+            with os.fdopen(handle, "wb") as sink:
+                sink.write(body)
+            os.replace(temporary, path)
+        except BaseException:
+            temporary.unlink(missing_ok=True)
+            raise
+        return path
