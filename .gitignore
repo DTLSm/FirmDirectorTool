@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!example.tfvars
+.terraform.lock.hcl
+
+# Data — raw filings, local Postgres volumes, artifacts
+data/
+*.npz
+!tests/fixtures/*.npz
+
+# OS
+.DS_Store
+Thumbs.db
