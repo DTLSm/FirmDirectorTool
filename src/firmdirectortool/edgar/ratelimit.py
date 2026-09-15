@@ -25,6 +25,15 @@ import threading
 import time
 from collections.abc import Callable
 
+#: Tolerance for floating-point dust when comparing tokens.
+#:
+#: Refilling multiplies an elapsed time by a rate, and neither is exact in
+#: binary: after a wait computed to land on exactly one token, the bucket may
+#: hold 0.9999999999999998 instead. Without this slack the loop below would
+#: compute a new delay of about 1e-16, sleep for a duration too small to change
+#: the clock at all, find the same shortfall, and spin forever.
+TOKEN_EPSILON = 1e-9
+
 
 class TokenBucket:
     """A thread-safe token bucket.
@@ -76,20 +85,40 @@ class TokenBucket:
 
         Returns the number of seconds spent waiting, so callers can log or
         assert on throttling without timing the call themselves.
-
-        Implementation notes for whoever writes this:
-
-        * Refill lazily. There is no background thread; on each call work out
-          how much time has passed since ``self._updated`` and add
-          ``elapsed * self.rate`` tokens, clamped at ``self.capacity``.
-        * If there are not enough tokens, the shortfall divided by the rate is
-          exactly how long to wait. Sleep that long, then refill again rather
-          than assuming the sleep was exact — ``time.sleep`` may overshoot.
-        * Hold ``self._lock`` across the whole refill-check-sleep cycle. It is
-          tempting to release it while sleeping, but then two threads can each
-          decide there is room for the same token. Serialising the waits is the
-          point: the bucket is the queue.
-        * Asking for more than ``capacity`` can never be satisfied. Raise
-          :class:`ValueError` rather than deadlocking.
         """
-        raise NotImplementedError
+        if tokens > self.capacity:
+            # Waiting would never succeed, however long we slept. Say so now
+            # rather than hanging forever.
+            raise ValueError(
+                f"cannot acquire {tokens} tokens from a bucket that holds at most {self.capacity}"
+            )
+
+        waited = 0.0
+        # The lock is held across the whole check-sleep-recheck cycle, not just
+        # the arithmetic. Releasing it while sleeping would let two threads each
+        # conclude there was room for the same token. Serialising the waits is
+        # the point: the bucket *is* the queue.
+        with self._lock:
+            while True:
+                self._refill()
+                if self._tokens >= tokens - TOKEN_EPSILON:
+                    self._tokens = max(0.0, self._tokens - tokens)
+                    return waited
+                # Exactly how long the missing tokens take to appear.
+                delay = (tokens - self._tokens) / self.rate
+                self._sleep(delay)
+                waited += delay
+                # Loop rather than assuming the sleep was exact: time.sleep is
+                # allowed to overshoot, and a fake clock in a test may not
+                # advance the way we asked.
+
+    def _refill(self) -> None:
+        """Add the tokens that accrued since the last call. Caller holds the lock.
+
+        There is no background thread topping the bucket up; it is refilled
+        lazily on demand, which is both cheaper and easier to reason about.
+        """
+        now = self._monotonic()
+        elapsed = max(0.0, now - self._updated)
+        self._updated = now
+        self._tokens = min(self.capacity, self._tokens + elapsed * self.rate)
