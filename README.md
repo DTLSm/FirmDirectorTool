@@ -41,6 +41,18 @@ uv run ruff check . && uv run ruff format --check . && uv run mypy
 
 CI runs the same four commands on every push and pull request.
 
+### Talking to EDGAR
+
+The SEC requires every automated client to identify itself, and blocks requests
+that do not. Copy `.env.example` to `.env` and set `EDGAR_USER_AGENT` to your
+name and a real email address. There is deliberately no default: a contact
+address hard-coded into a public repository ends up in every image, every log
+line and every fork.
+
+The client caps itself at 10 requests per second — the published fair-access
+limit — and caches every response under `EDGAR_CACHE_ROOT` before parsing it,
+so re-parsing costs nothing.
+
 ## The distance engine
 
 `src/firmdirectortool/distance/` — ported from a private BoardEx-based research tool, with three

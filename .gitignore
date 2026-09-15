@@ -17,6 +17,7 @@ dist/
 # Environment and secrets
 .env
 .env.*
+!.env.example
 *.pem
 
 # Terraform

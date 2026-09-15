@@ -1,0 +1,252 @@
+<SEC-DOCUMENT>0001193125-26-389339.txt : 20260911
+<SEC-HEADER>0001193125-26-389339.hdr.sgml : 20260911
+<ACCEPTANCE-DATETIME>20260911163105
+ACCESSION NUMBER:		0001193125-26-389339
+CONFORMED SUBMISSION TYPE:	3
+PUBLIC DOCUMENT COUNT:		1
+CONFORMED PERIOD OF REPORT:	20260901
+FILED AS OF DATE:		20260911
+DATE AS OF CHANGE:		20260911
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			Maffessoni Fernando
+		CENTRAL INDEX KEY:			0002149082
+		ORGANIZATION NAME:           	
+
+	FILING VALUES:
+		FORM TYPE:		3
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-36165
+		FILM NUMBER:		261374742
+
+	MAIL ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		RUA DR. RENATO PAES DE BARROS, 1017
+		STREET 2:		3 ANDAR PARTE
+		CITY:			SAO PAULO
+		PROVINCE COUNTRY:   	D5
+		ZIP:			00000
+
+ISSUER:		
+
+	COMPANY DATA:	
+		COMPANY CONFORMED NAME:			AMBEV S.A.
+		CENTRAL INDEX KEY:			0001565025
+		STANDARD INDUSTRIAL CLASSIFICATION:	BEVERAGES [2080]
+		ORGANIZATION NAME:           	04 Manufacturing
+		EIN:				000000000
+		STATE OF INCORPORATION:			D5
+		FISCAL YEAR END:			1231
+
+	BUSINESS ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		RUA DR. RENATO PAES DE BARROS, 1017
+		STREET 2:		3 ANDAR PARTE
+		CITY:			SAO PAULO
+		PROVINCE COUNTRY:   	D5
+		BUSINESS PHONE:		55(11)2122-1414
+
+	MAIL ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		RUA DR. RENATO PAES DE BARROS, 1017
+		STREET 2:		3 ANDAR PARTE
+		CITY:			SAO PAULO
+		PROVINCE COUNTRY:   	D5
+
+	FORMER COMPANY:	
+		FORMER CONFORMED NAME:	InBev Corporate Holdings Inc.
+		DATE OF NAME CHANGE:	20121219
+</SEC-HEADER>
+<DOCUMENT>
+<TYPE>3
+<SEQUENCE>1
+<FILENAME>ownership.xml
+<DESCRIPTION>3
+<TEXT>
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0607</schemaVersion>
+
+    <documentType>3</documentType>
+
+    <periodOfReport>2026-09-01</periodOfReport>
+
+    <noSecuritiesOwned>0</noSecuritiesOwned>
+
+    <issuer>
+        <issuerCik>0001565025</issuerCik>
+        <issuerName>AMBEV S.A.</issuerName>
+        <issuerTradingSymbol>ABEV</issuerTradingSymbol>
+        <issuerForeignTradingSymbol>ABEV3</issuerForeignTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0002149082</rptOwnerCik>
+            <rptOwnerName>Maffessoni Fernando</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>RUA DR. RENATO PAES DE BARROS, 1017</rptOwnerStreet1>
+            <rptOwnerStreet2>3RD FLOOR</rptOwnerStreet2>
+            <rptOwnerCity>SAO PAULO</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory></rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>D5</rptOwnerCountry>
+            <rptOwnerZipCode>04530-001</rptOwnerZipCode>
+            <rptOwnerStateDescription>BRAZIL</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>true</isOfficer>
+            <isTenPercentOwner>false</isTenPercentOwner>
+            <isOther>false</isOther>
+            <officerTitle>See Remarks</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Shares</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>874</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Stock Options (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>3.32</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <value>2021-12-01</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2026-12-02</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Shares</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>90211</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Stock Options (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>3.98</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <value>2022-12-01</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2027-12-02</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Shares</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>328545</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Stock Options (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>3.28</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <value>2023-12-03</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2028-12-04</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Shares</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>144835</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Stock Options (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>3.50</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <value>2024-12-02</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2029-12-03</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Shares</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>113184</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+    </derivativeTable>
+
+    <remarks>Logistics Vice President Officer.
+
+All prices were converted from Brazilian Real (BRL) to U.S. Dollars (USD) based on the foreign exchange rate as of September 1, 2026 (at USD 1.00 = BRL 5.16).</remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Fernando Maffessoni</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
+</XML>
+</TEXT>
+</DOCUMENT>
+</SEC-DOCUMENT>

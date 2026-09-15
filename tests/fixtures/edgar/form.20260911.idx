@@ -1,0 +1,36 @@
+Description:           Daily Index of EDGAR Dissemination Feed by Form Type
+Last Data Received:    Sep 11, 2026
+Comments:              webmaster@sec.gov
+Anonymous FTP:         ftp://ftp.sec.gov/edgar/
+ 
+ 
+ 
+ 
+Form Type   Company Name                                                  CIK
+      Date Filed  File Name
+---------------------------------------------------------------------------------------------------------------------------------------------
+1-A POS          McQueen Labs Series, LLC                                      2025795     20260911    edgar/data/2025795/0001493152-26-042361.txt                                                
+1-A/A            Accrew, Inc. / DE                                             1917637     20260911    edgar/data/1917637/0001917637-26-000001.txt                                                
+1-A/A            Modern Screen Media, Inc.                                     2096421     20260911    edgar/data/2096421/0001493152-26-042374.txt                                                
+10-K             1 800 FLOWERS COM INC                                         1084869     20260911    edgar/data/1084869/0001084869-26-000029.txt                                                
+10-K             Guidewire Software, Inc.                                      1528396     20260911    edgar/data/1528396/0001528396-26-000046.txt                                                
+10-K             CXJ GROUP CO., Ltd                                            1823635     20260911    edgar/data/1823635/0001493152-26-042301.txt                                                
+3                AMBEV S.A.                                                    1565025     20260911    edgar/data/1565025/0001193125-26-389339.txt                                                
+3                Maffessoni Fernando                                           2149082     20260911    edgar/data/2149082/0001193125-26-389339.txt                                                
+4                NWPX Infrastructure, Inc.                                     1001385     20260911    edgar/data/1001385/0001437749-26-030170.txt                                                
+4                UNION PACIFIC CORP                                            100885      20260911    edgar/data/100885/0000100885-26-000268.txt                                                
+4                FRANSON MICHAEL C                                             1233202     20260911    edgar/data/1233202/0001437749-26-030170.txt                                                
+4                DST Global Advisors Ltd                                       1550172     20260911    edgar/data/1550172/0001193125-26-389357.txt                                                
+4                DST Global VI, L.P.                                           1745295     20260911    edgar/data/1745295/0001193125-26-389357.txt                                                
+4                DST Investments XXI, L.P.                                     1770474     20260911    edgar/data/1770474/0001193125-26-389357.txt                                                
+4                DST Global VII, L.P.                                          1782400     20260911    edgar/data/1782400/0001193125-26-389357.txt                                                
+4                Chime Financial, Inc.                                         1795586     20260911    edgar/data/1795586/0001193125-26-389357.txt                                                
+4                Hamann Jennifer L                                             1798280     20260911    edgar/data/1798280/0000100885-26-000268.txt                                                
+4                DST Managers VI Ltd                                           1941907     20260911    edgar/data/1941907/0001193125-26-389357.txt                                                
+4                DST Managers VII Ltd                                          1941908     20260911    edgar/data/1941908/0001193125-26-389357.txt                                                
+4                DSTG VII Investments-4, L.P.                                  2072426     20260911    edgar/data/2072426/0001193125-26-389357.txt                                                
+4                DSTG VII Investments-1, L.P.                                  2072428     20260911    edgar/data/2072428/0001193125-26-389357.txt                                                
+4                DSTG VI Investments-A, L.P.                                   2072429     20260911    edgar/data/2072429/0001193125-26-389357.txt                                                
+4                DSTG VI Investments, L.P.                                     2072430     20260911    edgar/data/2072430/0001193125-26-389357.txt                                                
+4/A              TAYLOR DIAN C                                                 1208428     20260911    edgar/data/1208428/0000863110-26-000091.txt                                                
+4/A              ARTESIAN RESOURCES CORP                                       863110      20260911    edgar/data/863110/0000863110-26-000091.txt                                                

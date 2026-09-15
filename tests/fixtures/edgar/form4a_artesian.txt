@@ -1,0 +1,145 @@
+<SEC-DOCUMENT>0000863110-26-000091.txt : 20260911
+<SEC-HEADER>0000863110-26-000091.hdr.sgml : 20260911
+<ACCEPTANCE-DATETIME>20260911120708
+ACCESSION NUMBER:		0000863110-26-000091
+CONFORMED SUBMISSION TYPE:	4/A
+PUBLIC DOCUMENT COUNT:		1
+CONFORMED PERIOD OF REPORT:	20260903
+FILED AS OF DATE:		20260911
+DATE AS OF CHANGE:		20260911
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			TAYLOR DIAN C
+		CENTRAL INDEX KEY:			0001208428
+		ORGANIZATION NAME:           	
+
+	FILING VALUES:
+		FORM TYPE:		4/A
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	000-18516
+		FILM NUMBER:		261373348
+
+ISSUER:		
+
+	COMPANY DATA:	
+		COMPANY CONFORMED NAME:			ARTESIAN RESOURCES CORP
+		CENTRAL INDEX KEY:			0000863110
+		STANDARD INDUSTRIAL CLASSIFICATION:	WATER SUPPLY [4941]
+		ORGANIZATION NAME:           	01 Energy & Transportation
+		EIN:				510002090
+		STATE OF INCORPORATION:			DE
+		FISCAL YEAR END:			1231
+
+	BUSINESS ADDRESS:	
+		STREET 1:		664 CHURCHMANS RD
+		CITY:			NEWARK
+		STATE:			DE
+		ZIP:			19702
+		BUSINESS PHONE:		3024536900
+
+	MAIL ADDRESS:	
+		STREET 1:		664 CHURCHMANS RD
+		CITY:			NEWARK
+		STATE:			DE
+		ZIP:			19702
+</SEC-HEADER>
+<DOCUMENT>
+<TYPE>4/A
+<SEQUENCE>1
+<FILENAME>form4a.xml
+<DESCRIPTION>PRIMARY DOCUMENT
+<TEXT>
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0609</schemaVersion>
+
+    <documentType>4/A</documentType>
+
+    <periodOfReport>2026-09-03</periodOfReport>
+
+    <dateOfOriginalSubmission>2026-09-04</dateOfOriginalSubmission>
+
+    <issuer>
+        <issuerCik>0000863110</issuerCik>
+        <issuerName>ARTESIAN RESOURCES CORP</issuerName>
+        <issuerTradingSymbol>ARTNA</issuerTradingSymbol>
+        <issuerForeignTradingSymbol></issuerForeignTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001208428</rptOwnerCik>
+            <rptOwnerName>TAYLOR DIAN C</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>false</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>1403 BOHEMIA MILL ROAD</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>MIDDLETOWN</rptOwnerCity>
+            <rptOwnerState>DE</rptOwnerState>
+            <rptOwnerZipCode>19709</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <aff10b5One>0</aff10b5One>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Class A Non-voting Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-03</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1876</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>36.11</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>25073</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">AMENDED PER INSTRUCTION FROM BROKER.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>Dian C. Taylor</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
+</XML>
+</TEXT>
+</DOCUMENT>
+</SEC-DOCUMENT>

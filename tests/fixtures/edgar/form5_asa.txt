@@ -1,0 +1,126 @@
+<SEC-DOCUMENT>0001213900-26-067096.txt : 20260610
+<SEC-HEADER>0001213900-26-067096.hdr.sgml : 20260610
+<ACCEPTANCE-DATETIME>20260610090003
+ACCESSION NUMBER:		0001213900-26-067096
+CONFORMED SUBMISSION TYPE:	5
+PUBLIC DOCUMENT COUNT:		1
+CONFORMED PERIOD OF REPORT:	20251130
+FILED AS OF DATE:		20260610
+DATE AS OF CHANGE:		20260610
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			Merk Alexander
+		CENTRAL INDEX KEY:			0001772159
+		ORGANIZATION NAME:           	
+
+	FILING VALUES:
+		FORM TYPE:		5
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	811-21650
+		FILM NUMBER:		261078345
+
+	MAIL ADDRESS:	
+		STREET 1:		C/O APEX FUND SERVICES
+		STREET 2:		3 CANAL PLAZA, SUITE 600
+		CITY:			PORTLAND
+		STATE:			ME
+		ZIP:			04101
+
+ISSUER:		
+
+	COMPANY DATA:	
+		COMPANY CONFORMED NAME:			ASA Gold & Precious Metals Ltd
+		CENTRAL INDEX KEY:			0001230869
+		ORGANIZATION NAME:           	
+		EIN:				000000000
+		STATE OF INCORPORATION:			DE
+		FISCAL YEAR END:			1130
+
+	BUSINESS ADDRESS:	
+		STREET 1:		APEX FUND SERVICES
+		STREET 2:		THREE CANAL PLAZA
+		CITY:			PORTLAND
+		STATE:			ME
+		ZIP:			04101
+		BUSINESS PHONE:		207-347-2000
+
+	MAIL ADDRESS:	
+		STREET 1:		APEX FUND SERVICES
+		STREET 2:		THREE CANAL PLAZA
+		CITY:			PORTLAND
+		STATE:			ME
+		ZIP:			04101
+
+	FORMER COMPANY:	
+		FORMER CONFORMED NAME:	ASA LTD
+		DATE OF NAME CHANGE:	20070301
+
+	FORMER COMPANY:	
+		FORMER CONFORMED NAME:	ASA BERMUDA LTD
+		DATE OF NAME CHANGE:	20030505
+</SEC-HEADER>
+<DOCUMENT>
+<TYPE>5
+<SEQUENCE>1
+<FILENAME>ownership.xml
+<TEXT>
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0609</schemaVersion>
+
+    <documentType>5</documentType>
+
+    <periodOfReport>2025-11-30</periodOfReport>
+
+    <notSubjectToSection16>1</notSubjectToSection16>
+
+    <form3HoldingsReported>0</form3HoldingsReported>
+
+    <form4TransactionsReported>0</form4TransactionsReported>
+
+    <issuer>
+        <issuerCik>0001230869</issuerCik>
+        <issuerName>ASA Gold &amp; Precious Metals Ltd</issuerName>
+        <issuerTradingSymbol>ASA</issuerTradingSymbol>
+        <issuerForeignTradingSymbol></issuerForeignTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001772159</rptOwnerCik>
+            <rptOwnerName>Merk Alexander</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>false</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O ACA</rptOwnerStreet1>
+            <rptOwnerStreet2>190 MIDDLE STREET</rptOwnerStreet2>
+            <rptOwnerCity>PORTLAND</rptOwnerCity>
+            <rptOwnerState>ME</rptOwnerState>
+            <rptOwnerZipCode>04101</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>0</isDirector>
+            <isOfficer>1</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle>Chief Operating Officer</officerTitle>
+            <otherText></otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <aff10b5One>0</aff10b5One>
+
+    <ownerSignature>
+        <signatureName>/s/ Axel Merk</signatureName>
+        <signatureDate>2026-06-10</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
+</XML>
+</TEXT>
+</DOCUMENT>
+</SEC-DOCUMENT>

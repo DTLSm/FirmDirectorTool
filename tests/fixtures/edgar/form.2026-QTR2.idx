@@ -1,0 +1,40 @@
+Description:           Master Index of EDGAR Dissemination Feed by Form Type
+Last Data Received:    June 30, 2026
+Comments:              webmaster@sec.gov
+Anonymous FTP:         ftp://ftp.sec.gov/edgar/
+
+
+
+
+Form Type   Company Name                                                  CIK         Date Filed  File Name
+---------------------------------------------------------------------------------------------------------------------------------------------
+1                Reserved for Notice Registration of Security Futures Product  2132551     2026-04-29  edgar/data/2132551/9999999997-26-000773.txt         
+1-A              3DX Industries, Inc.                                          1453122     2026-05-13  edgar/data/1453122/0001683168-26-003799.txt         
+1-A              AQUA POWER SYSTEMS INC.                                       1553264     2026-06-17  edgar/data/1553264/0001683168-26-004896.txt         
+1-A              Agentiq Sports 1 Series LLC                                   2105654     2026-06-15  edgar/data/2105654/0001213900-26-068878.txt         
+1-A              BridgeWell Secured Income LP                                  2088435     2026-05-11  edgar/data/2088435/0001731122-26-000695.txt         
+1-A              CBD Life Sciences Inc.                                        1776073     2026-05-15  edgar/data/1776073/0001683168-26-004020.txt         
+1-A              CROWDCASTING INC                                              2125668     2026-04-15  edgar/data/2125668/0001096906-26-000547.txt         
+1-A              Casa Shares Assets, LLC                                       1988874     2026-06-30  edgar/data/1988874/0001493152-26-031162.txt         
+1-A              Community Redevelopment Inc.                                  1084551     2026-05-29  edgar/data/1084551/0001099910-26-000197.txt         
+1-A              Connect Invest IIII, LLC                                      2139773     2026-06-09  edgar/data/2139773/0001171520-26-000135.txt         
+1-A              G Health Inc.                                                 2097407     2026-05-28  edgar/data/2097407/0002097407-26-000003.txt         
+1-A              GLOBAL AESTHETIC MEDICAL GROUP, INC.                          2112617     2026-06-16  edgar/data/2112617/0002112617-26-000003.txt         
+1-A              Green Coffee Co Holdings, LLC                                 1819425     2026-05-21  edgar/data/1819425/0001104659-26-065035.txt         
+1-A              Greenfield Robotics Corp                                      1760404     2026-06-18  edgar/data/1760404/0001104659-26-075802.txt         
+1-A              Greenlite Holdings, Inc.                                      2124579     2026-05-29  edgar/data/2124579/0001096906-26-000884.txt         
+1-A              Havana Roasters Coffee Companies, Inc.                        1409253     2026-04-01  edgar/data/1409253/0001409253-26-000004.txt         
+1-A              KANG MEIDA INTERNATIONAL INC.                                 2124074     2026-05-19  edgar/data/2124074/0002124074-26-000001.txt         
+1-A              LAKESIDE SERENITY RESORTS INC                                 2104744     2026-04-02  edgar/data/2104744/0002104744-26-000009.txt         
+1-A              LAKESIDE SERENITY RESORTS INC                                 2104744     2026-04-24  edgar/data/2104744/0002104744-26-000011.txt         
+1-A              LAKESIDE SERENITY RESORTS INC                                 2104744     2026-05-14  edgar/data/2104744/0002104744-26-000013.txt         
+1-A              MYRXWALLET NORTH AMERICA Corp                                 2041886     2026-06-22  edgar/data/2041886/0001683168-26-005016.txt         
+1-A              Masterworks Vault 11, LLC                                     2046168     2026-04-23  edgar/data/2046168/0001493152-26-018760.txt         
+1-A              Masterworks Vault 12, LLC                                     2046167     2026-04-23  edgar/data/2046167/0001493152-26-018767.txt         
+1-A              Masterworks Vault 13, LLC                                     2046166     2026-04-23  edgar/data/2046166/0001493152-26-018775.txt         
+1-A              Masterworks Vault 14, LLC                                     2046165     2026-04-23  edgar/data/2046165/0001493152-26-018779.txt         
+1-A              Masterworks Vault 15, LLC                                     2046164     2026-04-23  edgar/data/2046164/0001493152-26-018782.txt         
+1-A              Masterworks Vault 16, LLC                                     2046162     2026-04-23  edgar/data/2046162/0001493152-26-018751.txt         
+1-A              Masterworks Vault 17, LLC                                     2046460     2026-04-23  edgar/data/2046460/0001493152-26-018762.txt         
+1-A              Masterworks Vault 18, LLC                                     2046463     2026-04-23  edgar/data/2046463/0001493152-26-018765.txt         
+1-A              Masterworks Vault 19, LLC                                     2046464     2026-04-23  edgar/data/2046464/0001493152-26-018769.txt         

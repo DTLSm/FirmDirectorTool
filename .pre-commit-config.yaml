@@ -8,8 +8,12 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
+      # Recorded EDGAR responses are excluded: the index files are fixed-width
+      # and their trailing whitespace is part of the format under test.
       - id: end-of-file-fixer
+        exclude: ^tests/fixtures/edgar/
       - id: trailing-whitespace
+        exclude: ^tests/fixtures/edgar/
       - id: check-yaml
       - id: check-toml
       - id: check-added-large-files

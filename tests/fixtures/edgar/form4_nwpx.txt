@@ -1,0 +1,189 @@
+<SEC-DOCUMENT>0001437749-26-030170.txt : 20260911
+<SEC-HEADER>0001437749-26-030170.hdr.sgml : 20260911
+<ACCEPTANCE-DATETIME>20260911160917
+ACCESSION NUMBER:		0001437749-26-030170
+CONFORMED SUBMISSION TYPE:	4
+PUBLIC DOCUMENT COUNT:		1
+CONFORMED PERIOD OF REPORT:	20260909
+FILED AS OF DATE:		20260911
+DATE AS OF CHANGE:		20260911
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			FRANSON MICHAEL C
+		CENTRAL INDEX KEY:			0001233202
+		ORGANIZATION NAME:           	
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	000-27140
+		FILM NUMBER:		261374453
+
+	MAIL ADDRESS:	
+		STREET 1:		201 NE PARK PLAZA DRIVE
+		STREET 2:		SUITE 100
+		CITY:			VANCOUVER
+		STATE:			WA
+		ZIP:			98684
+
+ISSUER:		
+
+	COMPANY DATA:	
+		COMPANY CONFORMED NAME:			NWPX Infrastructure, Inc.
+		CENTRAL INDEX KEY:			0001001385
+		STANDARD INDUSTRIAL CLASSIFICATION:	STEEL PIPE & TUBES [3317]
+		ORGANIZATION NAME:           	04 Manufacturing
+		EIN:				930557988
+		STATE OF INCORPORATION:			OR
+		FISCAL YEAR END:			1231
+
+	BUSINESS ADDRESS:	
+		STREET 1:		201 NE PARK PLAZA DRIVE
+		STREET 2:		SUITE 100
+		CITY:			VANCOUVER
+		STATE:			WA
+		ZIP:			98684
+		BUSINESS PHONE:		3603976250
+
+	MAIL ADDRESS:	
+		STREET 1:		201 NE PARK PLAZA DRIVE
+		STREET 2:		SUITE 100
+		CITY:			VANCOUVER
+		STATE:			WA
+		ZIP:			98684
+
+	FORMER COMPANY:	
+		FORMER CONFORMED NAME:	NORTHWEST PIPE CO
+		DATE OF NAME CHANGE:	19950925
+</SEC-HEADER>
+<DOCUMENT>
+<TYPE>4
+<SEQUENCE>1
+<FILENAME>rdgdoc.xml
+<DESCRIPTION>FORM 4
+<TEXT>
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0609</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2026-09-09</periodOfReport>
+
+    <issuer>
+        <issuerCik>0001001385</issuerCik>
+        <issuerName>NWPX Infrastructure, Inc.</issuerName>
+        <issuerTradingSymbol>NWPX</issuerTradingSymbol>
+        <issuerForeignTradingSymbol></issuerForeignTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001233202</rptOwnerCik>
+            <rptOwnerName>FRANSON MICHAEL C</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>false</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>201 NE PARK PLAZA DRIVE</rptOwnerStreet1>
+            <rptOwnerStreet2>SUITE 100</rptOwnerStreet2>
+            <rptOwnerCity>VANCOUVER</rptOwnerCity>
+            <rptOwnerState>WA</rptOwnerState>
+            <rptOwnerZipCode>98661</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <aff10b5One>0</aff10b5One>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>3500</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>105.30360</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>15924</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-10</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>G</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>100</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>15824</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">100 shares represents a bona fide gift of NWPX Infrastructure, Inc. common stock made by the reporting person.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Michael Franson</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
+</XML>
+</TEXT>
+</DOCUMENT>
+</SEC-DOCUMENT>

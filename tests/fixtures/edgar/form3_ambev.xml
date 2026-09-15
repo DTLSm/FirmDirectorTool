@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0607</schemaVersion>
+
+    <documentType>3</documentType>
+
+    <periodOfReport>2026-09-01</periodOfReport>
+
+    <noSecuritiesOwned>0</noSecuritiesOwned>
+
+    <issuer>
+        <issuerCik>0001565025</issuerCik>
+        <issuerName>AMBEV S.A.</issuerName>
+        <issuerTradingSymbol>ABEV</issuerTradingSymbol>
+        <issuerForeignTradingSymbol>ABEV3</issuerForeignTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0002149082</rptOwnerCik>
+            <rptOwnerName>Maffessoni Fernando</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>RUA DR. RENATO PAES DE BARROS, 1017</rptOwnerStreet1>
+            <rptOwnerStreet2>3RD FLOOR</rptOwnerStreet2>
+            <rptOwnerCity>SAO PAULO</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory></rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>D5</rptOwnerCountry>
+            <rptOwnerZipCode>04530-001</rptOwnerZipCode>
+            <rptOwnerStateDescription>BRAZIL</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>true</isOfficer>
+            <isTenPercentOwner>false</isTenPercentOwner>
+            <isOther>false</isOther>
+            <officerTitle>See Remarks</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Shares</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>874</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Stock Options (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>3.32</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <value>2021-12-01</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2026-12-02</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Shares</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>90211</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Stock Options (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>3.98</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <value>2022-12-01</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2027-12-02</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Shares</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>328545</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Stock Options (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>3.28</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <value>2023-12-03</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2028-12-04</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Shares</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>144835</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Stock Options (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>3.50</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <value>2024-12-02</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2029-12-03</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Shares</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>113184</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+    </derivativeTable>
+
+    <remarks>Logistics Vice President Officer.
+
+All prices were converted from Brazilian Real (BRL) to U.S. Dollars (USD) based on the foreign exchange rate as of September 1, 2026 (at USD 1.00 = BRL 5.16).</remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Fernando Maffessoni</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
