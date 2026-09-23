@@ -21,6 +21,8 @@ from firmdirectortool.edgar import (
     BlockedError,
     ClientConfig,
     EdgarClient,
+    EdgarConnectionError,
+    EdgarError,
     EdgarHTTPError,
     NotFoundError,
     RateLimitError,
@@ -169,6 +171,33 @@ def test_gives_up_on_a_persistent_429(tmp_path: Path) -> None:
     assert len(script.requests) == 4  # the first try plus three retries
 
 
+def test_refuses_to_wait_out_a_retry_after_over_the_limit(tmp_path: Path) -> None:
+    """An hour-long sleep inside a scheduled run is a hang, not a retry."""
+    script = Script(fail(429, {"Retry-After": "3600"}), ok())
+    client, slept = make_client(tmp_path, script)
+    with client, pytest.raises(RateLimitError, match="3600s"):
+        client.get_bytes(URL)
+    assert len(script.requests) == 1
+    assert slept == []
+
+
+def test_a_long_retry_after_on_a_server_error_also_stops(tmp_path: Path) -> None:
+    script = Script(fail(503, {"Retry-After": "3600"}), ok())
+    client, slept = make_client(tmp_path, script)
+    with client, pytest.raises(EdgarHTTPError) as excinfo:
+        client.get_bytes(URL)
+    assert excinfo.value.status_code == 503
+    assert slept == []
+
+
+def test_a_retry_after_at_the_limit_is_waited_out(tmp_path: Path) -> None:
+    script = Script(fail(429, {"Retry-After": "60"}), ok(b"patience"))
+    client, slept = make_client(tmp_path, script)
+    with client:
+        assert client.get_bytes(URL) == b"patience"
+    assert slept == [pytest.approx(60.0)]
+
+
 def test_retries_server_errors(tmp_path: Path) -> None:
     script = Script(fail(503), fail(500), ok(b"up again"))
     client, _ = make_client(tmp_path, script)
@@ -181,6 +210,18 @@ def test_retries_a_dropped_connection(tmp_path: Path) -> None:
     client, _ = make_client(tmp_path, script)
     with client:
         assert client.get_bytes(URL) == b"second attempt"
+
+
+def test_a_connection_that_never_recovers_raises_an_edgar_error(tmp_path: Path) -> None:
+    """A caller catching EdgarError must not miss the one failure with no status code."""
+    dropped = httpx.ConnectError("reset by peer")
+    script = Script(dropped)
+    client, _ = make_client(tmp_path, script, max_retries=3)
+    with client, pytest.raises(EdgarConnectionError) as excinfo:
+        client.get_bytes(URL)
+    assert isinstance(excinfo.value, EdgarError)
+    assert excinfo.value.__cause__ is dropped
+    assert len(script.requests) == 4
 
 
 def test_403_is_terminal(tmp_path: Path) -> None:

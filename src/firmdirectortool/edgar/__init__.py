@@ -10,6 +10,7 @@ from .client import (
 )
 from .errors import (
     BlockedError,
+    EdgarConnectionError,
     EdgarError,
     EdgarHTTPError,
     NotFoundError,
@@ -41,6 +42,7 @@ __all__ = [
     "BlockedError",
     "ClientConfig",
     "EdgarClient",
+    "EdgarConnectionError",
     "EdgarError",
     "EdgarHTTPError",
     "EntitySubmissions",

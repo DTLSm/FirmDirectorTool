@@ -29,7 +29,11 @@ class NotFoundError(EdgarHTTPError):
 
 
 class RateLimitError(EdgarHTTPError):
-    """429, still 429 after the retry budget was spent."""
+    """429 that the client stopped retrying.
+
+    Either the retry budget was spent, or the server's ``Retry-After`` asked
+    for a longer wait than ``ClientConfig.max_retry_after`` allows.
+    """
 
 
 class BlockedError(EdgarHTTPError):
@@ -46,6 +50,20 @@ class BlockedError(EdgarHTTPError):
                 "Check EDGAR_USER_AGENT and the rate limiter before retrying."
             ),
         )
+
+
+class EdgarConnectionError(EdgarError):
+    """No response at all, still, after the retry budget was spent.
+
+    Refused, reset, timed out, unresolvable. Deliberately not an
+    :class:`EdgarHTTPError`: there is no status code to report, and inventing
+    one would mislead whoever reads the log. The underlying ``httpx`` exception
+    is chained as ``__cause__``.
+    """
+
+    def __init__(self, url: str, message: str | None = None) -> None:
+        self.url = url
+        super().__init__(message or f"no response from {url}")
 
 
 class ParseError(EdgarError):

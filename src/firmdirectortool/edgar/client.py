@@ -28,6 +28,8 @@ import random
 import time
 from collections.abc import Callable
 from dataclasses import dataclass
+from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from types import TracebackType
 from typing import Any
@@ -35,7 +37,13 @@ from typing import Any
 import httpx
 
 from .cache import RawCache
-from .errors import BlockedError, EdgarHTTPError, NotFoundError, RateLimitError
+from .errors import (
+    BlockedError,
+    EdgarConnectionError,
+    EdgarHTTPError,
+    NotFoundError,
+    RateLimitError,
+)
 from .ratelimit import TokenBucket
 
 #: The SEC's published fair-access ceiling, in requests per second.
@@ -59,6 +67,7 @@ class ClientConfig:
     max_retries: int = 5
     backoff_base: float = 0.5
     backoff_cap: float = 30.0
+    max_retry_after: float = 60.0
     timeout: float = 30.0
     cache_root: Path | None = Path("data/raw")
 
@@ -112,7 +121,25 @@ def retry_after_seconds(response: httpx.Response) -> float | None:
     For the date form, the delay is the date minus *now*; clamp negatives to
     zero, and be careful to compare timezone-aware datetimes.
     """
-    raise NotImplementedError
+    value = response.headers.get("Retry-After", "").strip()
+    if not value:
+        return None
+
+    # delay-seconds is 1*DIGIT. Checking the characters rather than calling
+    # float() keeps out "-5", "1e9", "nan" and "inf", all of which float()
+    # would happily accept and none of which are a sane amount of time to sleep.
+    if value.isascii() and value.isdigit():
+        return float(int(value))
+
+    try:
+        when = parsedate_to_datetime(value)
+    except (TypeError, ValueError):
+        return None
+    # A "-0000" offset parses to a naive datetime. RFC 9110 dates are always
+    # GMT, so read it as UTC rather than letting the subtraction below raise.
+    if when.tzinfo is None:
+        when = when.replace(tzinfo=UTC)
+    return max(0.0, (when - datetime.now(UTC)).total_seconds())
 
 
 def backoff_delay(
@@ -136,7 +163,9 @@ def backoff_delay(
 
     ``rng`` is injectable so tests can pin the draw.
     """
-    raise NotImplementedError
+    ceiling = min(cap, base * 2**attempt)
+    uniform = rng.uniform if rng is not None else random.uniform
+    return uniform(0.0, ceiling)
 
 
 class EdgarClient:
@@ -210,7 +239,10 @@ class EdgarClient:
         3. Send. On a retryable status (:data:`RETRYABLE_STATUSES`), sleep for
            :func:`retry_after_seconds` if the server said so, otherwise
            :func:`backoff_delay`, and go back to step 2 — the retry is a new
-           request and must pay for a new token.
+           request and must pay for a new token. If ``Retry-After`` asks for
+           longer than ``config.max_retry_after``, stop retrying instead of
+           sleeping: retrying early earns another 429, and a scheduled run is
+           better failing now and being rerun than stalling for an hour.
         4. Map what is left onto the exception hierarchy: 403 to
            :class:`~.errors.BlockedError` immediately with no retry, 404 to
            :class:`~.errors.NotFoundError`, an exhausted budget on 429 to
@@ -220,13 +252,67 @@ class EdgarClient:
 
         Connection-level failures (:class:`httpx.TransportError`) are retryable
         on the same schedule — a reset connection is not different from a 503
-        as far as this loop is concerned.
+        as far as this loop is concerned. Once the budget is spent they surface
+        as :class:`~.errors.EdgarConnectionError`, so a caller catching
+        :class:`~.errors.EdgarError` sees every way a fetch can fail.
 
         Note that ``use_cache=False`` still *writes* to the cache. The flag
         means "do not trust what is there", which is what a daily index for the
         current day needs; it does not mean "do not record what came back".
         """
-        raise NotImplementedError
+        if use_cache and self.cache is not None:
+            cached = self.cache.get(url)
+            if cached is not None:
+                return cached
+
+        max_retries = self.config.max_retries
+        attempt = 0
+        gave_up_because: str | None = None
+        while True:
+            self.bucket.acquire()
+            delay: float | None
+            try:
+                response = self._http.get(url)
+            except httpx.TransportError as exc:
+                if attempt >= max_retries:
+                    raise EdgarConnectionError(
+                        url, f"no response from {url} after {attempt + 1} attempts: {exc!r}"
+                    ) from exc
+                delay = None
+            else:
+                if response.status_code not in RETRYABLE_STATUSES or attempt >= max_retries:
+                    break
+                delay = retry_after_seconds(response)
+                if delay is not None and delay > self.config.max_retry_after:
+                    gave_up_because = (
+                        f"HTTP {response.status_code} from {url} with Retry-After of "
+                        f"{delay:.0f}s, over max_retry_after={self.config.max_retry_after:g}s"
+                    )
+                    break
+            if delay is None:
+                delay = backoff_delay(
+                    attempt, base=self.config.backoff_base, cap=self.config.backoff_cap
+                )
+            self._sleep(delay)
+            attempt += 1
+
+        # The loop only exits on a response it will not retry: a success, a
+        # terminal status, or a retryable one with the budget spent or a
+        # Retry-After too long to wait out.
+        status = response.status_code
+        if status == 403:
+            raise BlockedError(url)
+        if status == 404:
+            raise NotFoundError(status, url)
+        if status == 429:
+            raise RateLimitError(status, url, gave_up_because)
+        if not response.is_success:
+            raise EdgarHTTPError(status, url, gave_up_because)
+
+        body = response.content
+        if self.cache is not None:
+            self.cache.put(url, body)
+        return body
 
     def get_text(self, url: str, *, use_cache: bool = True, encoding: str = "utf-8") -> str:
         """:meth:`get_bytes`, decoded. EDGAR serves latin-1 in places; errors are replaced."""
@@ -243,6 +329,7 @@ __all__ = [
     "BlockedError",
     "ClientConfig",
     "EdgarClient",
+    "EdgarConnectionError",
     "EdgarHTTPError",
     "NotFoundError",
     "RateLimitError",
