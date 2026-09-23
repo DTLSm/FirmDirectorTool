@@ -181,3 +181,52 @@ def test_walk_does_not_trust_a_cached_copy_of_todays_index(fixtures: Path, tmp_p
 
         list(walk_daily(client, day, day, today=date(2026, 9, 15)))
         assert len(server.requests) == 2  # served from cache
+
+
+# -------------------------------------------------------------- quarterly
+
+
+class QuarterlyIndexServer:
+    """Serves the 2026 Q2 fixture for every quarter asked, and records which."""
+
+    def __init__(self, body: str) -> None:
+        self.body = body
+        self.requests: list[str] = []
+
+    def __call__(self, request: httpx.Request) -> httpx.Response:
+        self.requests.append(str(request.url))
+        return httpx.Response(200, text=self.body)
+
+
+def test_walk_quarterly_fetches_each_overlapping_quarter_once(
+    fixtures: Path, tmp_path: Path
+) -> None:
+    from firmdirectortool.edgar import walk_quarterly
+
+    server = QuarterlyIndexServer((fixtures / "form.2026-QTR2.idx").read_text())
+    config = ClientConfig(user_agent=UA, cache_root=tmp_path / "raw")
+    with EdgarClient(config, transport=httpx.MockTransport(server), sleep=lambda _: None) as c:
+        list(walk_quarterly(c, date(2025, 11, 15), date(2026, 5, 1), form_types={"1-A"}))
+    assert server.requests == [
+        quarterly_index_url(2025, 4),
+        quarterly_index_url(2026, 1),
+        quarterly_index_url(2026, 2),
+    ]
+
+
+def test_walk_quarterly_honours_the_date_window_exactly(fixtures: Path, tmp_path: Path) -> None:
+    """The quarter has 1-A filings on many days; only those inside [start, end] come back."""
+    from firmdirectortool.edgar import walk_quarterly
+
+    text = (fixtures / "form.2026-QTR2.idx").read_text()
+    server = QuarterlyIndexServer(text)
+    config = ClientConfig(user_agent=UA, cache_root=tmp_path / "raw")
+    start, end = date(2026, 4, 23), date(2026, 5, 13)
+    with EdgarClient(config, transport=httpx.MockTransport(server), sleep=lambda _: None) as c:
+        got = list(walk_quarterly(c, start, end, form_types={"1-A"}))
+    expected = [
+        e for e in parse_form_idx(text) if e.form_type == "1-A" and start <= e.date_filed <= end
+    ]
+    assert got == expected
+    assert got  # the window is not empty
+    assert len(got) < sum(e.form_type == "1-A" for e in parse_form_idx(text))

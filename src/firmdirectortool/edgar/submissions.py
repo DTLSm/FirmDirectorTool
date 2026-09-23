@@ -17,6 +17,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from .client import EdgarClient
+from .errors import ParseError
 
 SUBMISSIONS_BASE = "https://data.sec.gov/submissions"
 
@@ -62,7 +63,52 @@ def parse_submissions(payload: Any) -> EntitySubmissions:
     A missing ``name`` is a corrupt document: raise :class:`~.errors.ParseError`.
     Everything else degrades to ``None`` or an empty tuple.
     """
-    raise NotImplementedError
+    if not isinstance(payload, dict):
+        raise ParseError(f"submissions payload is {type(payload).__name__}, not an object")
+
+    name = _text(payload.get("name"))
+    if name is None:
+        raise ParseError("submissions payload has no name")
+
+    raw_cik = payload.get("cik")
+    try:
+        cik = int(raw_cik) if isinstance(raw_cik, str | int) else None
+    except ValueError:
+        cik = None
+    if cik is None:
+        raise ParseError(f"submissions payload for {name!r} has cik {raw_cik!r}")
+
+    fiscal_year_end = _text(payload.get("fiscalYearEnd"))
+    if fiscal_year_end is not None:
+        fiscal_year_end = fiscal_year_end.strip("-")
+        if not (len(fiscal_year_end) == 4 and fiscal_year_end.isdigit()):
+            fiscal_year_end = None
+
+    # Note the walrus target: a generator's assignment expression binds in the
+    # *enclosing* scope, so naming it ``name`` would clobber the entity's name.
+    former_names = tuple(
+        former
+        for item in payload.get("formerNames") or []
+        if isinstance(item, dict) and (former := _text(item.get("name")))
+    )
+
+    return EntitySubmissions(
+        cik=cik,
+        name=name,
+        tickers=tuple(t for t in map(_text, payload.get("tickers") or []) if t),
+        fiscal_year_end=fiscal_year_end,
+        entity_type=_text(payload.get("entityType")),
+        sic=_text(payload.get("sic")),
+        former_names=former_names,
+    )
+
+
+def _text(value: Any) -> str | None:
+    """A non-blank string, or ``None``. The payload uses ``""`` and ``null`` interchangeably."""
+    if not isinstance(value, str):
+        return None
+    value = value.strip()
+    return value or None
 
 
 def fetch_submissions(client: EdgarClient, cik: int) -> EntitySubmissions:

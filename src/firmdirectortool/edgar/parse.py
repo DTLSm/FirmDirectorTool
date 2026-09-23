@@ -29,11 +29,20 @@ HTTP layer stays ours, the parsing need not.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import re
+from dataclasses import dataclass, field
 from datetime import date
-from xml.etree.ElementTree import Element
+from xml.etree.ElementTree import Element, fromstring
+from xml.etree.ElementTree import ParseError as XMLParseError
 
 from .errors import ParseError
+
+#: An ``<XML>`` block in a dissemination-format submission file. The wrapper
+#: tags are upper-case and on their own lines; the body is anything, lazily.
+_XML_BLOCK = re.compile(r"<XML>\s*(.*?)\s*</XML>", re.DOTALL)
+
+_TRUE = frozenset({"1", "true", "y", "yes"})
+_FALSE = frozenset({"0", "false", "n", "no"})
 
 __all__ = [
     "OwnershipFiling",
@@ -79,7 +88,9 @@ class OwnershipFiling:
     issuer_name: str
     issuer_trading_symbol: str | None
     owners: tuple[ReportingOwner, ...]
-    accession: str | None = None
+    #: Provenance, not content: two parses of the same document are equal
+    #: whatever the caller labelled them, so this is excluded from ``==``.
+    accession: str | None = field(default=None, compare=False)
 
     @property
     def directors(self) -> tuple[ReportingOwner, ...]:
@@ -90,7 +101,7 @@ class OwnershipFiling:
         return self.document_type.endswith("/A")
 
 
-def extract_ownership_xml(submission: str | bytes) -> str:
+def extract_ownership_xml(submission: str | bytes, *, accession: str | None = None) -> str:
     """Pull the ``ownershipDocument`` XML out of a complete submission text file.
 
     A submission file looks like this, and the tags are *not* closed properly —
@@ -123,7 +134,17 @@ def extract_ownership_xml(submission: str | bytes) -> str:
     the caller should be able to count them rather than crash: make the message
     say which accession, if it was given one.
     """
-    raise NotImplementedError
+    text = (
+        submission.decode("utf-8", errors="replace")
+        if isinstance(submission, bytes)
+        else submission
+    )
+    for match in _XML_BLOCK.finditer(text):
+        body = match.group(1)
+        if "<ownershipDocument" in body:
+            return body
+    where = f" {accession}" if accession else ""
+    raise ParseError(f"no ownershipDocument XML in submission{where}")
 
 
 def element_text(parent: Element, path: str) -> str | None:
@@ -139,7 +160,15 @@ def element_text(parent: Element, path: str) -> str | None:
     back to the element's own text. Return ``None`` for an empty string so that
     callers can use ``or`` chains without treating ``""`` as a real title.
     """
-    raise NotImplementedError
+    element = parent.find(path)
+    if element is None:
+        return None
+    value = element.find("value")
+    text = (value if value is not None else element).text
+    if text is None:
+        return None
+    text = text.strip()
+    return text or None
 
 
 def element_flag(parent: Element, path: str) -> bool:
@@ -154,7 +183,15 @@ def element_flag(parent: Element, path: str) -> bool:
     value you do not recognise rather than defaulting to false. A silently
     false ``isDirector`` deletes a person from a board.
     """
-    raise NotImplementedError
+    text = element_text(parent, path)
+    if text is None:
+        return False
+    lowered = text.lower()
+    if lowered in _TRUE:
+        return True
+    if lowered in _FALSE:
+        return False
+    raise ParseError(f"{path}: unrecognised flag value {text!r}")
 
 
 def parse_ownership_document(xml: str | bytes, *, accession: str | None = None) -> OwnershipFiling:
@@ -199,4 +236,68 @@ def parse_ownership_document(xml: str | bytes, *, accession: str | None = None) 
     the specification: where this docstring and a fixture disagree, the fixture
     is right.
     """
-    raise NotImplementedError
+    where = f" in {accession}" if accession else ""
+    try:
+        root = fromstring(xml)
+    except XMLParseError as exc:
+        raise ParseError(f"malformed ownership XML{where}: {exc}") from exc
+    if root.tag != "ownershipDocument":
+        raise ParseError(f"expected <ownershipDocument>{where}, got <{root.tag}>")
+
+    document_type = element_text(root, "documentType")
+    if document_type is None:
+        raise ParseError(f"no documentType{where}")
+
+    issuer_cik = _cik(element_text(root, "issuer/issuerCik"), "issuerCik", where)
+
+    period_text = element_text(root, "periodOfReport")
+    try:
+        period_of_report = date.fromisoformat(period_text) if period_text else None
+    except ValueError:
+        raise ParseError(f"unreadable periodOfReport {period_text!r}{where}") from None
+
+    symbol = element_text(root, "issuer/issuerTradingSymbol")
+    if symbol is not None and symbol.upper() in {"NONE", "N/A"}:
+        symbol = None
+
+    owners = []
+    for block in root.findall("reportingOwner"):
+        owners.append(
+            ReportingOwner(
+                cik=_cik(element_text(block, "reportingOwnerId/rptOwnerCik"), "rptOwnerCik", where),
+                name=element_text(block, "reportingOwnerId/rptOwnerName") or "",
+                is_director=_flag(block, "isDirector", where),
+                is_officer=_flag(block, "isOfficer", where),
+                is_ten_percent_owner=_flag(block, "isTenPercentOwner", where),
+                is_other=_flag(block, "isOther", where),
+                officer_title=element_text(block, "reportingOwnerRelationship/officerTitle"),
+            )
+        )
+
+    return OwnershipFiling(
+        document_type=document_type,
+        period_of_report=period_of_report,
+        issuer_cik=issuer_cik,
+        issuer_name=element_text(root, "issuer/issuerName") or "",
+        issuer_trading_symbol=symbol,
+        owners=tuple(owners),
+        accession=accession,
+    )
+
+
+def _cik(text: str | None, field: str, where: str) -> int:
+    """A zero-padded CIK string as an int, or :class:`ParseError` if missing or not a number."""
+    if text is None:
+        raise ParseError(f"missing {field}{where}")
+    try:
+        return int(text)
+    except ValueError:
+        raise ParseError(f"{field} {text!r} is not an integer{where}") from None
+
+
+def _flag(owner: Element, name: str, where: str) -> bool:
+    """:func:`element_flag` on a relationship flag, with the accession in the error."""
+    try:
+        return element_flag(owner, f"reportingOwnerRelationship/{name}")
+    except ParseError as exc:
+        raise ParseError(f"{exc}{where}") from None

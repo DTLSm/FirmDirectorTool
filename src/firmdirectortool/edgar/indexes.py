@@ -34,16 +34,24 @@ listing, then fetch the document). See :func:`~.parse.extract_ownership_xml`.
 
 from __future__ import annotations
 
+import re
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 
 from .client import EdgarClient
+from .errors import NotFoundError, ParseError
 
 ARCHIVES = "https://www.sec.gov/Archives"
 
 #: Section 16 ownership forms, including amendments.
 OWNERSHIP_FORMS = frozenset({"3", "3/A", "4", "4/A", "5", "5/A"})
+
+#: An accession number at the end of a filename: ``0001193125-26-389357.txt``.
+_ACCESSION_AT_END = re.compile(r"(\d{10}-\d{2}-\d{6})\.txt$")
+
+#: Two or more spaces: the gap between form type and company name.
+_COLUMN_GAP = re.compile(r" {2,}")
 
 
 def quarter_of(day: date) -> int:
@@ -91,12 +99,15 @@ class IndexEntry:
         digits, dash-separated) raise :class:`~.errors.ParseError` rather than
         returning a plausible-looking wrong answer.
         """
-        raise NotImplementedError
+        match = _ACCESSION_AT_END.search(self.filename)
+        if match is None:
+            raise ParseError(f"no accession number in index filename {self.filename!r}")
+        return match.group(1)
 
     @property
     def accession_nodash(self) -> str:
         """``000032019326000008`` — the form EDGAR uses in folder paths."""
-        raise NotImplementedError
+        return self.accession.replace("-", "")
 
     @property
     def url(self) -> str:
@@ -142,7 +153,52 @@ def parse_form_idx(text: str) -> Iterator[IndexEntry]:
 
     ``tests/fixtures/edgar/`` has a trimmed copy of each flavour.
     """
-    raise NotImplementedError
+    in_records = False
+    for lineno, raw in enumerate(text.splitlines(), start=1):
+        line = raw.strip()
+        if not in_records:
+            # Everything up to and including the line of dashes is preamble.
+            if line and set(line) == {"-"}:
+                in_records = True
+            continue
+        if not line:
+            continue
+
+        head, *tail = line.rsplit(maxsplit=3)
+        if len(tail) != 3:
+            raise ParseError(f"index line {lineno}: expected five fields, got {line!r}")
+        cik_text, date_text, filename = tail
+
+        # Form type and company name are separated by a run of spaces, and only
+        # the first such run is the boundary. A record with no company name at
+        # all (it happens) leaves a single part.
+        parts = _COLUMN_GAP.split(head, maxsplit=1)
+        form_type = parts[0]
+        company_name = parts[1] if len(parts) == 2 else ""
+
+        try:
+            cik = int(cik_text)
+        except ValueError:
+            raise ParseError(f"index line {lineno}: CIK {cik_text!r} is not an integer") from None
+        try:
+            date_filed = _parse_index_date(date_text)
+        except ValueError:
+            raise ParseError(f"index line {lineno}: unreadable date {date_text!r}") from None
+
+        yield IndexEntry(
+            form_type=form_type,
+            company_name=company_name,
+            cik=cik,
+            date_filed=date_filed,
+            filename=filename,
+        )
+
+
+def _parse_index_date(text: str) -> date:
+    """``YYYYMMDD`` (daily) or ``YYYY-MM-DD`` (quarterly)."""
+    if len(text) == 8 and text.isdigit():
+        return date(int(text[:4]), int(text[4:6]), int(text[6:]))
+    return date.fromisoformat(text)
 
 
 def walk_daily(
@@ -174,7 +230,20 @@ def walk_daily(
       ingestion job's decision, and it wants the per-filer lines to cross-check
       against the reporting owners it finds in the document.
     """
-    raise NotImplementedError
+    wanted = frozenset(form_types)
+    # ``None`` means the real today, so forgetting the argument fails safe: the
+    # worst case is one uncached request, not a stale copy of a growing file.
+    today = date.today() if today is None else today
+    day = start
+    while day <= end:
+        try:
+            text = client.get_text(daily_index_url(day), use_cache=day != today)
+        except NotFoundError:
+            text = ""
+        for entry in parse_form_idx(text):
+            if entry.form_type in wanted:
+                yield entry
+        day += timedelta(days=1)
 
 
 def walk_quarterly(
@@ -191,4 +260,11 @@ def walk_quarterly(
     rather than building a list: a quarter of filings is hundreds of thousands
     of records.
     """
-    raise NotImplementedError
+    wanted = frozenset(form_types)
+    year, quarter = start.year, quarter_of(start)
+    while (year, quarter) <= (end.year, quarter_of(end)):
+        text = client.get_text(quarterly_index_url(year, quarter))
+        for entry in parse_form_idx(text):
+            if entry.form_type in wanted and start <= entry.date_filed <= end:
+                yield entry
+        year, quarter = (year + 1, 1) if quarter == 4 else (year, quarter + 1)
