@@ -1,0 +1,22 @@
+# Local development only. Slice 2 replaces this with Terraform and a managed
+# Postgres; the schema and the store do not change.
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: firmdirector
+      POSTGRES_PASSWORD: firmdirector
+      POSTGRES_DB: firmdirector
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U firmdirector -d firmdirector"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+
+volumes:
+  pgdata:
