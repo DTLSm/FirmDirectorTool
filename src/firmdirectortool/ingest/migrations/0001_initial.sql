@@ -22,6 +22,9 @@ CREATE INDEX filings_date_filed_idx ON filings (date_filed);
 
 CREATE TABLE reporting_owners (
     accession               TEXT        NOT NULL REFERENCES filings ON DELETE CASCADE,
+    -- Place in the ownershipDocument, from 0. A table has no row order,
+    -- so this is what keeps a filing's owners in document order.
+    position                INTEGER     NOT NULL,
     cik                     BIGINT      NOT NULL,
     name                    TEXT        NOT NULL,
     is_director             BOOLEAN     NOT NULL,
@@ -29,7 +32,8 @@ CREATE TABLE reporting_owners (
     is_ten_percent_owner    BOOLEAN     NOT NULL,
     is_other                BOOLEAN     NOT NULL,
     officer_title           TEXT,
-    PRIMARY KEY (accession, cik)
+    PRIMARY KEY (accession, cik),
+    UNIQUE (accession, position)
 );
 
 CREATE INDEX reporting_owners_cik_idx ON reporting_owners (cik);
