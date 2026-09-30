@@ -17,10 +17,10 @@ def fixtures() -> Path:
 
 @pytest.fixture(scope="session")
 def database_url() -> str:
-    """The test database. Tests that need it skip when DATABASE_URL is unset."""
-    url = os.environ.get("DATABASE_URL")
+    """The test database. Tests that need it skip when TEST_DATABASE_URL is unset."""
+    url = os.environ.get("TEST_DATABASE_URL")
     if not url:
-        pytest.skip("DATABASE_URL not set; start Postgres with docker compose up -d")
+        pytest.skip("TEST_DATABASE_URL not set; start Postgres with docker compose up -d")
     return url
 
 
