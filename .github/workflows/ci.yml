@@ -11,6 +11,24 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+
+    # A throwaway Postgres next to the job, as docker-compose.yml runs one
+    # locally, so the store and migration tests run here instead of skipping.
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: firmdirector
+          POSTGRES_PASSWORD: firmdirector
+          POSTGRES_DB: firmdirector_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U firmdirector -d firmdirector_test"
+          --health-interval 2s
+          --health-timeout 2s
+          --health-retries 15
+
     steps:
       - uses: actions/checkout@v4
 
@@ -32,3 +50,5 @@ jobs:
 
       - name: Test
         run: uv run pytest
+        env:
+          TEST_DATABASE_URL: postgresql://firmdirector:firmdirector@localhost:5432/firmdirector_test

@@ -1,0 +1,949 @@
+<SEC-DOCUMENT>0001193125-26-389357.txt : 20260911
+<SEC-HEADER>0001193125-26-389357.hdr.sgml : 20260911
+<ACCEPTANCE-DATETIME>20260911164130
+ACCESSION NUMBER:		0001193125-26-389357
+CONFORMED SUBMISSION TYPE:	4
+PUBLIC DOCUMENT COUNT:		1
+CONFORMED PERIOD OF REPORT:	20260909
+FILED AS OF DATE:		20260911
+DATE AS OF CHANGE:		20260911
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DST Global Advisors Ltd
+		CENTRAL INDEX KEY:			0001550172
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			D8
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374889
+
+	BUSINESS ADDRESS:	
+		STREET 1:		C/O TRIDENT TRUST COMPANY (B.V.I.), LTD.
+		STREET 2:		TRIDENT CHAMBERS, P.O. BOX 146
+		CITY:			ROAD TOWN, TORTOLA
+		STATE:			D8
+		ZIP:			VG1110
+		BUSINESS PHONE:		1-202-346-4293
+
+	MAIL ADDRESS:	
+		STREET 1:		C/O GOODWIN PROCTER LLP
+		STREET 2:		1900 N STREET, N.W.
+		CITY:			WASHINGTON
+		STATE:			DC
+		ZIP:			20036
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DST Global VI, L.P.
+		CENTRAL INDEX KEY:			0001745295
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374888
+
+	BUSINESS ADDRESS:	
+		STREET 1:		C/O TULLOCH & CO.
+		STREET 2:		4 HILL STREET
+		CITY:			LONDON
+		STATE:			X0
+		ZIP:			W1J 5NE
+		BUSINESS PHONE:		44-207-3181 180
+
+	MAIL ADDRESS:	
+		STREET 1:		C/O TULLOCH & CO.
+		STREET 2:		4 HILL STREET
+		CITY:			LONDON
+		STATE:			X0
+		ZIP:			W1J 5NE
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DST Investments XXI, L.P.
+		CENTRAL INDEX KEY:			0001770474
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374886
+
+	BUSINESS ADDRESS:	
+		STREET 1:		C/O TRIDENT TRUST COMPANY (CAYMAN) LTD.
+		STREET 2:		ONE CAPITAL PLACE 847
+		CITY:			GRAND CAYMAN
+		STATE:			E9
+		ZIP:			KY1 1103
+		BUSINESS PHONE:		44-207-3181180
+
+	MAIL ADDRESS:	
+		STREET 1:		C/O TULLOCH & CO.
+		STREET 2:		4 HILL STREET
+		CITY:			LONDON
+		STATE:			X0
+		ZIP:			W1J 5NE
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DST Global VII, L.P.
+		CENTRAL INDEX KEY:			0001782400
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374887
+
+	BUSINESS ADDRESS:	
+		STREET 1:		C/O TRIDENT TRUST COMPANY (CAYMAN) LTD.
+		STREET 2:		ONE CAPITAL PLACE 847
+		CITY:			GRAND CAYMAN
+		STATE:			E9
+		ZIP:			KY1 1103
+		BUSINESS PHONE:		44 207 3181180
+
+	MAIL ADDRESS:	
+		STREET 1:		C/O TULLOCH & CO.
+		STREET 2:		4 HILL STREET
+		CITY:			LONDON
+		STATE:			X0
+		ZIP:			W1J 5NE
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DST Managers VI Ltd
+		CENTRAL INDEX KEY:			0001941907
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374881
+
+	BUSINESS ADDRESS:	
+		STREET 1:		C/O TRIDENT TRUST COMPANY (CAYMAN) LTD.
+		STREET 2:		ONE CAPITAL PLACE, P.O. BOX 847
+		CITY:			GRAND CAYMAN
+		STATE:			E9
+		ZIP:			KY1 1103
+		BUSINESS PHONE:		44 20 73181180
+
+	MAIL ADDRESS:	
+		STREET 1:		C/O GOODWIN PROCTER LLP
+		STREET 2:		1900 N STREET, N.W.
+		CITY:			WASHINGTON
+		STATE:			DC
+		ZIP:			20036
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DSTG VI Investments, L.P.
+		CENTRAL INDEX KEY:			0002072430
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374885
+
+	BUSINESS ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		ONE CAPITAL PLACE
+		STREET 2:		PO BOX 847
+		CITY:			GRAND CAYMAN
+		PROVINCE COUNTRY:   	E9
+		ZIP:			KY1-1103
+		BUSINESS PHONE:		1-202-346-4293
+
+	MAIL ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		ONE CAPITAL PLACE
+		STREET 2:		PO BOX 847
+		CITY:			GRAND CAYMAN
+		PROVINCE COUNTRY:   	E9
+		ZIP:			KY1-1103
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DST Managers VII Ltd
+		CENTRAL INDEX KEY:			0001941908
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374880
+
+	BUSINESS ADDRESS:	
+		STREET 1:		C/O TRIDENT TRUST COMPANY (CAYMAN) LTD.
+		STREET 2:		ONE CAPITAL PLACE, P.O. BOX 847
+		CITY:			GRAND CAYMAN
+		STATE:			E9
+		ZIP:			KY1 1103
+		BUSINESS PHONE:		44 20 73181180
+
+	MAIL ADDRESS:	
+		STREET 1:		C/O GOODWIN PROCTER LLP
+		STREET 2:		1900 N STREET, N.W.
+		CITY:			WASHINGTON
+		STATE:			DC
+		ZIP:			20036
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DSTG VII Investments-4, L.P.
+		CENTRAL INDEX KEY:			0002072426
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374882
+
+	BUSINESS ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		ONE CAPITAL PLACE
+		STREET 2:		PO BOX 847
+		CITY:			GRAND CAYMAN
+		PROVINCE COUNTRY:   	E9
+		ZIP:			KY1-1103
+		BUSINESS PHONE:		1-202-346-4293
+
+	MAIL ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		ONE CAPITAL PLACE
+		STREET 2:		PO BOX 847
+		CITY:			GRAND CAYMAN
+		PROVINCE COUNTRY:   	E9
+		ZIP:			KY1-1103
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DSTG VII Investments-1, L.P.
+		CENTRAL INDEX KEY:			0002072428
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374883
+
+	BUSINESS ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		ONE CAPITAL PLACE
+		STREET 2:		PO BOX 847
+		CITY:			GRAND CAYMAN
+		PROVINCE COUNTRY:   	E9
+		ZIP:			KY1-1103
+		BUSINESS PHONE:		1-202-346-4293
+
+	MAIL ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		ONE CAPITAL PLACE
+		STREET 2:		PO BOX 847
+		CITY:			GRAND CAYMAN
+		PROVINCE COUNTRY:   	E9
+		ZIP:			KY1-1103
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			DSTG VI Investments-A, L.P.
+		CENTRAL INDEX KEY:			0002072429
+		ORGANIZATION NAME:           	
+		STATE OF INCORPORATION:			E9
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-42693
+		FILM NUMBER:		261374884
+
+	BUSINESS ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		ONE CAPITAL PLACE
+		STREET 2:		PO BOX 847
+		CITY:			GRAND CAYMAN
+		PROVINCE COUNTRY:   	E9
+		ZIP:			KY1-1103
+		BUSINESS PHONE:		1-202-346-4293
+
+	MAIL ADDRESS:	
+		ADDRESS IS A NON US LOCATION: 	YES
+		STREET 1:		ONE CAPITAL PLACE
+		STREET 2:		PO BOX 847
+		CITY:			GRAND CAYMAN
+		PROVINCE COUNTRY:   	E9
+		ZIP:			KY1-1103
+
+ISSUER:		
+
+	COMPANY DATA:	
+		COMPANY CONFORMED NAME:			Chime Financial, Inc.
+		CENTRAL INDEX KEY:			0001795586
+		STANDARD INDUSTRIAL CLASSIFICATION:	FINANCE SERVICES [6199]
+		ORGANIZATION NAME:           	02 Finance
+		EIN:				460925388
+		STATE OF INCORPORATION:			DE
+		FISCAL YEAR END:			1231
+
+	BUSINESS ADDRESS:	
+		STREET 1:		101 CALIFORNIA STREET, SUITE 500
+		CITY:			SAN FRANCISCO
+		STATE:			CA
+		ZIP:			94111
+		BUSINESS PHONE:		844-244-6363
+
+	MAIL ADDRESS:	
+		STREET 1:		101 CALIFORNIA STREET, SUITE 500
+		CITY:			SAN FRANCISCO
+		STATE:			CA
+		ZIP:			94111
+</SEC-HEADER>
+<DOCUMENT>
+<TYPE>4
+<SEQUENCE>1
+<FILENAME>ownership.xml
+<DESCRIPTION>4
+<TEXT>
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0609</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2026-09-09</periodOfReport>
+
+    <notSubjectToSection16>false</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0001795586</issuerCik>
+        <issuerName>Chime Financial, Inc.</issuerName>
+        <issuerTradingSymbol>CHYM</issuerTradingSymbol>
+        <issuerForeignTradingSymbol></issuerForeignTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001550172</rptOwnerCik>
+            <rptOwnerName>DST Global Advisors Ltd</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>false</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (B.V.I.) LTD,</rptOwnerStreet1>
+            <rptOwnerStreet2>TRIDENT CHAMBERS, P.O. BOX 146 ROAD TOWN</rptOwnerStreet2>
+            <rptOwnerCity>TORTOLA</rptOwnerCity>
+            <rptOwnerState>VI</rptOwnerState>
+            <rptOwnerZipCode>VG1110</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001745295</rptOwnerCik>
+            <rptOwnerName>DST Global VI, L.P.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001782400</rptOwnerCik>
+            <rptOwnerName>DST Global VII, L.P.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001770474</rptOwnerCik>
+            <rptOwnerName>DST Investments XXI, L.P.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0002072430</rptOwnerCik>
+            <rptOwnerName>DSTG VI Investments, L.P.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0002072429</rptOwnerCik>
+            <rptOwnerName>DSTG VI Investments-A, L.P.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0002072428</rptOwnerCik>
+            <rptOwnerName>DSTG VII Investments-1, L.P.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0002072426</rptOwnerCik>
+            <rptOwnerName>DSTG VII Investments-4, L.P.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN,</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001941907</rptOwnerCik>
+            <rptOwnerName>DST Managers VI Ltd</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001941908</rptOwnerCik>
+            <rptOwnerName>DST Managers VII Ltd</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>true</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>C/O TRIDENT TRUST COMPANY (CAYMAN) LTD</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE CAPITAL PLACE, P.O. BOX 847</rptOwnerStreet2>
+            <rptOwnerCity>GRAND CAYMAN</rptOwnerCity>
+            <rptOwnerNonUSStateTerritory>CAYMAN ISLANDS</rptOwnerNonUSStateTerritory>
+            <rptOwnerCountry>E9</rptOwnerCountry>
+            <rptOwnerZipCode>KY1-1103</rptOwnerZipCode>
+            <rptOwnerStateDescription>CAYMAN ISLANDS</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>false</isOfficer>
+            <isTenPercentOwner>true</isTenPercentOwner>
+            <isOther>false</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <aff10b5One>false</aff10b5One>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Class A Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>false</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>27294</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>35.0265</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>18053808</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By DST Global VI, L.P.</value>
+                    <footnoteId id="F2"/>
+                    <footnoteId id="F3"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Class A Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>false</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>14023</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>35.0265</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>9275341</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By DST Investments XXI, L.P.</value>
+                    <footnoteId id="F2"/>
+                    <footnoteId id="F4"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Class A Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>false</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>2354</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>35.0265</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1556956</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By DSTG VI Investments, L.P.</value>
+                    <footnoteId id="F2"/>
+                    <footnoteId id="F5"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Class A Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>false</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>2844</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>35.0265</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1881455</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By DSTG VI Investments-A, L.P.</value>
+                    <footnoteId id="F2"/>
+                    <footnoteId id="F6"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Class A Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>false</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>8261</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>35.0265</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>5464422</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By DST Global VII, L.P.</value>
+                    <footnoteId id="F7"/>
+                    <footnoteId id="F8"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Class A Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>false</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>4296</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>35.0265</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2841501</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By DSTG VII Investments-1, L.P.</value>
+                    <footnoteId id="F7"/>
+                    <footnoteId id="F9"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Class A Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2026-09-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>false</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>558</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>35.0265</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>368812</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By DSTG VII Investments-4, L.P.</value>
+                    <footnoteId id="F7"/>
+                    <footnoteId id="F10"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">The price reported in Column 4 is a weighted average price. The shares were sold in multiple transactions at prices ranging from $34.75 to $35.36. The Reporting Person undertakes to provide to the Issuer, any security holder of the Issuer, or the staff of the Securities and Exchange Commission, on request, full information regarding the number of shares sold at each separate price within the range set forth in this footnote.</footnote>
+        <footnote id="F2">DST Managers VI Limited (&quot;DSTG Managers VI&quot;) is the general partner of each of DST Global VI, L.P., DST Investments XXI, L.P., DSTG VI Investments, L.P. and DSTG VI Investments-A, L.P. DSTG Managers VI is wholly-owned by DST Global Advisors Limited (&quot;DST Global Advisors&quot;). Cardew Services Limited (&quot;Cardew Services&quot;) wholly owns DST Global Advisors. Galileo (PTC) Limited (&quot;Galileo (PTC)&quot;) wholly owns Cardew Services. Despoina Zinonos is the sole equity owner of Galileo (PTC). Each of DST Managers VI, DST Global Advisors, Cardew Services, Galileo (PTC) and Ms. Zinonos disclaims beneficial ownership of the securities reported herein for purposes of Section 16 of the Exchange Act, except to the extent of its or her pecuniary interest therein, if any. This report shall not be deemed an admission that any of the Reporting Persons is a beneficial owner of such securities for the purpose of Section 16 of the Exchange Act, or for any other purpose</footnote>
+        <footnote id="F3">Shares held directly by DST Global VI, L.P.</footnote>
+        <footnote id="F4">Shares held directly by DST Investments XXI, L.P.</footnote>
+        <footnote id="F5">Shares held directly by DSTG VI Investments, L.P.</footnote>
+        <footnote id="F6">Shares held directly by DSTG VI Investments-A, L.P.</footnote>
+        <footnote id="F7">DST Managers VII Limited (&quot;DSTG Managers VII&quot;) is the general partner of each of DST Global VII, L.P., DSTG VII Investments-1, L.P. and DSTG VII Investments-4, L.P. DSTG Managers VII is wholly-owned by DST Global Advisors. Cardew Services wholly owns DST Global Advisors. Galileo (PTC) wholly owns Cardew Services. Ms. Zinonos is the sole equity owner of Galileo (PTC). Each of DST Managers VII, DST Global Advisors, Cardew Services, Galileo (PTC) and Ms. Zinonos disclaims beneficial ownership of the securities reported herein for purposes of Section 16 of the Exchange Act, except to the extent of its or her pecuniary interest therein, if any. This report shall not be deemed an admission that any of the Reporting Persons is a beneficial owner of such securities for the purpose of Section 16 of the Exchange Act, or for any other purpose.</footnote>
+        <footnote id="F8">Shares held directly by DST Global VII, L.P.</footnote>
+        <footnote id="F9">Shares held directly by DSTG VII Investments-1, L.P.</footnote>
+        <footnote id="F10">Shares held directly by DSTG VII Investments-4, L.P.</footnote>
+    </footnotes>
+
+    <remarks>This Form 4 is form 1 of 2. DST Global Advisors Limited is the Designated Filer on both form 1 and form 2.</remarks>
+
+    <ownerSignature>
+        <signatureName>DST Global VI, L.P. By: DST Managers VI Limited, its General Partner By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DST Global VII, L.P. By: DST Managers VII Limited, its General Partner By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DST Investments XXI, L.P. By: DST Managers VI Limited, its General Partner By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DSTG VI Investments, L.P. By: DST Managers VI Limited, its General Partner By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DSTG VI Investments-A, L.P. By: DST Managers VI Limited, its General Partner By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DSTG VII Investments-1, L.P. By: DST Managers VII Limited, its General Partner By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DSTG VII Investments-4, L.P. By: DST Managers VII Limited, its General Partner By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DST Managers VI Limited By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DST Managers VII Limited By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>DST Global Advisors Ltd By: /s/ Despoina Zinonos, President</signatureName>
+        <signatureDate>2026-09-11</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
+</XML>
+</TEXT>
+</DOCUMENT>
+</SEC-DOCUMENT>

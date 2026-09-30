@@ -1,1 +1,5 @@
 * text=auto eol=lf
+
+# EDGAR fixtures are recorded bytes. Trailing whitespace is load-bearing —
+# the index files are fixed-width — so nothing may normalise them.
+tests/fixtures/edgar/** -text
