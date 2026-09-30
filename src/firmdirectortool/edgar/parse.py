@@ -250,9 +250,11 @@ def parse_ownership_document(xml: str | bytes, *, accession: str | None = None) 
 
     issuer_cik = _cik(element_text(root, "issuer/issuerCik"), "issuerCik", where)
 
+    # XML dates may carry a time-zone offset ("2026-09-24-05:00"); some filers'
+    # software writes one. The day is the first ten characters either way.
     period_text = element_text(root, "periodOfReport")
     try:
-        period_of_report = date.fromisoformat(period_text) if period_text else None
+        period_of_report = date.fromisoformat(period_text[:10]) if period_text else None
     except ValueError:
         raise ParseError(f"unreadable periodOfReport {period_text!r}{where}") from None
 

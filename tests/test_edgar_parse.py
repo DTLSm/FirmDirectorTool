@@ -142,6 +142,26 @@ def test_ciks_are_integers_not_zero_padded_strings(fixtures: Path) -> None:
     assert isinstance(filing.issuer_cik, int)
 
 
+def test_a_period_with_a_time_zone_is_read_as_that_day(fixtures: Path) -> None:
+    # As filed in 0001477932-26-005831, the first real parse error.
+    xml = (fixtures / "form4_nwpx.xml").read_text()
+    zoned = xml.replace(
+        "<periodOfReport>2026-09-09</periodOfReport>",
+        "<periodOfReport>2026-09-09-05:00</periodOfReport>",
+    )
+    assert parse_ownership_document(zoned).period_of_report == date(2026, 9, 9)
+
+
+def test_an_unreadable_period_still_raises(fixtures: Path) -> None:
+    xml = (fixtures / "form4_nwpx.xml").read_text()
+    broken = xml.replace(
+        "<periodOfReport>2026-09-09</periodOfReport>",
+        "<periodOfReport>09/09/2026</periodOfReport>",
+    )
+    with pytest.raises(ParseError, match="periodOfReport"):
+        parse_ownership_document(broken)
+
+
 def test_a_document_without_an_issuer_cik_raises(fixtures: Path) -> None:
     xml = (fixtures / "form4_nwpx.xml").read_text()
     broken = xml.replace("<issuerCik>0001001385</issuerCik>", "")
