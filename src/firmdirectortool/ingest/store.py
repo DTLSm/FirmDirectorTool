@@ -76,6 +76,10 @@ class FilingStore(Protocol):
         """The ledger entry for ``accession``, or ``None`` if never seen."""
         ...
 
+    def entries_with(self, outcome: Outcome) -> list[LedgerEntry]:
+        """Every ledger entry whose outcome is ``outcome``, by date filed, then accession."""
+        ...
+
     def record(self, entry: LedgerEntry, filing: OwnershipFiling | None) -> None:
         """Write the ledger entry and, when there is one, the filing — together.
 
@@ -109,6 +113,10 @@ class MemoryStore:
 
     def ledger(self, accession: str) -> LedgerEntry | None:
         return self._ledger.get(accession)
+
+    def entries_with(self, outcome: Outcome) -> list[LedgerEntry]:
+        matching = [e for e in self._ledger.values() if e.outcome is outcome]
+        return sorted(matching, key=lambda e: (e.date_filed, e.accession))
 
     def record(self, entry: LedgerEntry, filing: OwnershipFiling | None) -> None:
         if (filing is None) != (entry.outcome is not Outcome.STORED):

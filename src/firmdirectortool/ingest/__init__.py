@@ -1,6 +1,6 @@
 """The ingestion job: index lines in, stored filings and a ledger out."""
 
-from .job import RunReport, group_by_accession, ingest_window, process_accession
+from .job import RunReport, group_by_accession, ingest_window, process_accession, retry_errors
 from .store import FilingStore, LedgerEntry, MemoryStore, Outcome
 
 __all__ = [
@@ -12,4 +12,5 @@ __all__ = [
     "group_by_accession",
     "ingest_window",
     "process_accession",
+    "retry_errors",
 ]

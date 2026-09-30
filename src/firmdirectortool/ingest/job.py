@@ -49,7 +49,13 @@ from firmdirectortool.edgar import (
 
 from .store import FilingStore, LedgerEntry, Outcome
 
-__all__ = ["RunReport", "group_by_accession", "ingest_window", "process_accession"]
+__all__ = [
+    "RunReport",
+    "group_by_accession",
+    "ingest_window",
+    "process_accession",
+    "retry_errors",
+]
 
 
 @dataclass
@@ -85,8 +91,10 @@ def process_accession(
     lines: list[IndexEntry],
 ) -> Outcome:
 
+    # A parse error is not final: after a parser fix, the same filing may
+    # parse. Stored and no-XML filings would come out the same again.
     ledgerentry = store.ledger(accession)
-    if ledgerentry is not None:
+    if ledgerentry is not None and ledgerentry.outcome is not Outcome.PARSE_ERROR:
         return Outcome.SKIPPED
 
     text = client.get_text(lines[0].url)
@@ -155,4 +163,34 @@ def ingest_window(
                 store.mark_day_done(day)
                 report.days_completed.append(day)
         day += timedelta(days=1)
+    return report
+
+
+def retry_errors(
+    client: EdgarClient,
+    store: FilingStore,
+    *,
+    form_types: Iterable[str] = OWNERSHIP_FORMS,
+    today: date | None = None,
+) -> RunReport:
+    """Process every recorded parse error again, for use after a parser fix.
+
+    The ledger has no URLs, so each error's day is walked again to get its
+    index lines back. For a past day the index and the filing both come from
+    the cache: a retry sends no requests. Days are not marked; they already are.
+    """
+    today = date.today() if today is None else today
+    errors = store.entries_with(Outcome.PARSE_ERROR)
+    if not errors:
+        return RunReport(today, today)
+    retry = {entry.accession for entry in errors}
+    days = sorted({entry.date_filed for entry in errors})
+
+    report = RunReport(days[0], days[-1])
+    for day in days:
+        lines = walk_daily(client, day, day, form_types=form_types, today=today)
+        for accession, group in group_by_accession(lines).items():
+            if accession in retry:
+                outcome = process_accession(client, store, accession, group)
+                report.counts[outcome] += 1
     return report

@@ -36,14 +36,15 @@ class PostgresStore:
         ).fetchone()
         if row is None:
             return None
-        accession, outcome, date_filed, filer_ciks, reason = row
-        return LedgerEntry(
-            accession=accession,
-            outcome=Outcome(outcome),
-            date_filed=date_filed,
-            filer_ciks=frozenset(filer_ciks),
-            reason=reason,
-        )
+        return _ledger_entry(row)
+
+    def entries_with(self, outcome: Outcome) -> list[LedgerEntry]:
+        rows = self._conn.execute(
+            "SELECT accession, outcome, date_filed, filer_ciks, reason "
+            "FROM ledger WHERE outcome = %s ORDER BY date_filed, accession",
+            (outcome.value,),
+        ).fetchall()
+        return [_ledger_entry(row) for row in rows]
 
     def record(self, entry: LedgerEntry, filing: OwnershipFiling | None) -> None:
         if (filing is None) != (entry.outcome is not Outcome.STORED):
@@ -140,3 +141,15 @@ class PostgresStore:
         self._conn.execute(
             "INSERT INTO days_done (day) VALUES (%s) ON CONFLICT (day) DO NOTHING", (day,)
         )
+
+
+def _ledger_entry(row: tuple[Any, ...]) -> LedgerEntry:
+    """A ``ledger`` row, selected as accession, outcome, date_filed, filer_ciks, reason."""
+    accession, outcome, date_filed, filer_ciks, reason = row
+    return LedgerEntry(
+        accession=accession,
+        outcome=Outcome(outcome),
+        date_filed=date_filed,
+        filer_ciks=frozenset(filer_ciks),
+        reason=reason,
+    )

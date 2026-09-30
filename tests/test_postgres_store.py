@@ -97,3 +97,18 @@ def test_a_stored_filing_comes_back_unchanged(db, fixtures):
     store = PostgresStore(db)
     store.record(stored_entry(CHIME), chime(fixtures))
     assert store.filing(CHIME) == chime(fixtures)
+
+
+def test_entries_with_finds_one_outcome_oldest_first(db):
+    store = PostgresStore(db)
+    late = LedgerEntry(
+        "0000000001-26-000002", Outcome.PARSE_ERROR, date(2026, 9, 28), frozenset({1}), "bad"
+    )
+    early = LedgerEntry(
+        "0000000001-26-000001", Outcome.PARSE_ERROR, date(2026, 9, 24), frozenset({2}), "bad"
+    )
+    other = LedgerEntry("0000000001-26-000003", Outcome.NO_XML, date(2026, 9, 24), frozenset({3}))
+    for entry in (late, early, other):
+        store.record(entry, None)
+    assert store.entries_with(Outcome.PARSE_ERROR) == [early, late]
+    assert store.entries_with(Outcome.STORED) == []

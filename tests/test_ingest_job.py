@@ -22,11 +22,13 @@ from firmdirectortool.edgar import (
     parse_form_idx,
 )
 from firmdirectortool.ingest import (
+    LedgerEntry,
     MemoryStore,
     Outcome,
     group_by_accession,
     ingest_window,
     process_accession,
+    retry_errors,
 )
 
 UA = "Test Runner test@example.org"
@@ -148,6 +150,20 @@ def test_process_skips_what_the_ledger_already_has(
     assert len(edgar.filing_requests) == 1
 
 
+def test_process_tries_a_parse_error_again(
+    client: EdgarClient, edgar: FixtureEdgar, day_lines: list[IndexEntry]
+) -> None:
+    """As after a parser fix: the ledger says parse_error, and now it parses."""
+    store = MemoryStore()
+    store.record(LedgerEntry(NWPX, Outcome.PARSE_ERROR, DAY, frozenset(), "old parser"), None)
+    lines = group_by_accession(day_lines)[NWPX]
+    with client:
+        assert process_accession(client, store, NWPX, lines) is Outcome.STORED
+    entry = store.ledger(NWPX)
+    assert entry is not None and entry.outcome is Outcome.STORED
+    assert store.filing(NWPX) is not None
+
+
 def test_process_records_a_submission_with_no_xml(
     client: EdgarClient, edgar: FixtureEdgar, day_lines: list[IndexEntry]
 ) -> None:
@@ -241,3 +257,57 @@ def test_a_server_error_stops_the_run_and_leaves_the_day_open(
     with client, pytest.raises(EdgarHTTPError):
         ingest_window(client, store, DAY, DAY, today=date(2026, 9, 15))
     assert not store.day_done(DAY)
+
+
+# ------------------------------------------------------------------ retry
+
+
+def parse_error(accession: str) -> LedgerEntry:
+    return LedgerEntry(accession, Outcome.PARSE_ERROR, DAY, frozenset(), "old parser")
+
+
+def test_retry_turns_parse_errors_into_stored(client: EdgarClient, edgar: FixtureEdgar) -> None:
+    store = MemoryStore()
+    store.record(parse_error(NWPX), None)
+    store.record(parse_error(CHIME), None)
+    store.mark_day_done(DAY)
+    with client:
+        report = retry_errors(client, store, today=date(2026, 9, 15))
+    assert report.counts == {Outcome.STORED: 2}
+    assert store.entries_with(Outcome.PARSE_ERROR) == []
+    # Only the two failed filings are fetched, not the other three that day.
+    assert len(edgar.filing_requests) == 2
+
+
+def test_retry_leaves_stored_filings_alone(client: EdgarClient, edgar: FixtureEdgar) -> None:
+    store = MemoryStore()
+    with client:
+        ingest_window(client, store, DAY, DAY, today=date(2026, 9, 15))
+        store.record(parse_error(NWPX), None)
+        before = len(edgar.filing_requests)
+        report = retry_errors(client, store, today=date(2026, 9, 15))
+    assert report.counts == {Outcome.STORED: 1}
+    assert len(edgar.filing_requests) == before  # the cache answered
+
+
+def test_retry_with_no_errors_does_nothing(client: EdgarClient, edgar: FixtureEdgar) -> None:
+    with client:
+        report = retry_errors(client, MemoryStore(), today=date(2026, 9, 15))
+    assert report.counts == {}
+    assert edgar.requests == []
+
+
+# ------------------------------------------------------------------ store
+
+
+def test_memory_store_entries_with_finds_one_outcome_oldest_first() -> None:
+    store = MemoryStore()
+    late = LedgerEntry("0000000001-26-000002", Outcome.PARSE_ERROR, DAY, frozenset({1}), "bad")
+    early = LedgerEntry(
+        "0000000001-26-000001", Outcome.PARSE_ERROR, date(2026, 9, 10), frozenset({2}), "bad"
+    )
+    other = LedgerEntry("0000000001-26-000003", Outcome.NO_XML, DAY, frozenset({3}))
+    for entry in (late, early, other):
+        store.record(entry, None)
+    assert store.entries_with(Outcome.PARSE_ERROR) == [early, late]
+    assert store.entries_with(Outcome.STORED) == []
