@@ -2,7 +2,8 @@
 
 Board interlock distances and appointment prediction, built entirely on public SEC EDGAR data.
 
-> **Status:** Slice 0 — distance engine and CI. Nothing is deployed yet. See [the roadmap](#roadmap).
+> **Status:** Slice 1, first half — daily ingestion of Forms 3, 4 and 5 into Postgres, runnable
+> locally. The graph, features and API come next. Nothing is deployed yet. See [the roadmap](#roadmap).
 
 ## What it will do
 
@@ -39,7 +40,8 @@ uv run pytest                 # tests
 uv run ruff check . && uv run ruff format --check . && uv run mypy
 ```
 
-CI runs the same four commands on every push and pull request.
+CI runs the same four commands on every push to `main` and every pull request, with a Postgres
+service so the database tests run there too. Locally they skip unless `TEST_DATABASE_URL` is set.
 
 ### Talking to EDGAR
 
@@ -52,6 +54,20 @@ line and every fork.
 The client caps itself at 10 requests per second — the published fair-access
 limit — and caches every response under `EDGAR_CACHE_ROOT` before parsing it,
 so re-parsing costs nothing.
+
+### Running the ingestion
+
+```bash
+docker compose up -d                                            # Postgres
+docker compose exec postgres createdb -U firmdirector firmdirector_test   # once, for the tests
+uv run --env-file .env python -m firmdirectortool.ingest        # the 14 days before today
+uv run --env-file .env python -m firmdirectortool.ingest --start 2026-09-01 --end 2026-09-05
+uv run --env-file .env python -m firmdirectortool.ingest --retry-errors   # after a parser fix
+```
+
+`.env` needs `DATABASE_URL` for the live data and `TEST_DATABASE_URL` for the tests: two
+databases, because the tests empty every table. See `.env.example`. A run can be repeated or
+interrupted at any time: days already done and filings already stored are skipped.
 
 ## The distance engine
 
@@ -68,8 +84,8 @@ dropped rather than inverted. Rationale in `docs/decisions/0001-whitening-transf
 
 | Slice | Deliverable |
 |---|---|
-| **0** | Repo, CI, distance engine with tests — *this* |
-| 1 | EDGAR client, parsers, Postgres schema, graph, features, FastAPI — all local via docker-compose |
+| 0 | Repo, CI, distance engine with tests |
+| **1** | EDGAR client, parsers, Postgres schema, graph, features, FastAPI — all local via docker-compose — *in progress: ingestion done* |
 | 2 | Azure: Terraform (persistent data stack + ephemeral compute stack), OIDC federation, ACR, AKS |
 | 3 | Kubernetes: manual deploy, CronJob ingestion, debugging drills |
 | 4 | GitOps with Argo CD |

@@ -21,8 +21,10 @@ What the job deliberately does *not* do:
 * It does not stop on a bad filing. A filing that cannot be parsed is recorded
   as such and the run carries on; the report says how many there were, and the
   caller decides whether that number is alarming. One malformed document in
-  two thousand must not lose the other 1,999 — but see the open question in
-  :func:`ingest_window`.
+  two thousand must not lose the other 1,999. The entry point exits 0 either
+  way; a threshold for failing a run belongs to the Slice 3 CronJob, where
+  "fail the job" has a meaning. After a parser fix, :func:`retry_errors`
+  processes the recorded errors again.
 * It does not decide what an amendment means. A ``4/A`` is stored as a
   filing with ``is_amendment`` set. Whether it supersedes the original is a
   question about board membership, and belongs in the graph layer.
