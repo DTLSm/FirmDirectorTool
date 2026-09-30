@@ -17,9 +17,15 @@ def fixtures() -> Path:
 
 @pytest.fixture(scope="session")
 def database_url() -> str:
-    """The test database. Tests that need it skip when TEST_DATABASE_URL is unset."""
+    """The test database. Tests that need it skip when TEST_DATABASE_URL is unset.
+
+    Except in CI, where Postgres is always there: a skip would turn a broken
+    ci.yml into a green run that tested no database code.
+    """
     url = os.environ.get("TEST_DATABASE_URL")
     if not url:
+        if os.environ.get("CI"):
+            pytest.fail("TEST_DATABASE_URL not set in CI; see the Test step in ci.yml")
         pytest.skip("TEST_DATABASE_URL not set; start Postgres with docker compose up -d")
     return url
 
