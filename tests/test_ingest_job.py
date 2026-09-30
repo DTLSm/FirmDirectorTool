@@ -229,7 +229,7 @@ def test_today_is_never_marked_done(client: EdgarClient, edgar: FixtureEdgar) ->
 
 
 def test_catch_up_over_a_window_with_missing_days(client: EdgarClient, edgar: FixtureEdgar) -> None:
-    """Weekends 404 and are marked done; the one real day is ingested."""
+    """Missing days are marked done without a filing; the one real day is ingested."""
     store = MemoryStore()
     with client:
         report = ingest_window(

@@ -129,11 +129,25 @@ def test_a_corrupt_record_is_not_swallowed(fixtures: Path) -> None:
 # ------------------------------------------------------------------- walk
 
 
-class DailyIndexServer:
-    """Serves the fixture for 11 Sep 2026 and 404s every other day."""
+#: What the real SEC sent for the Saturday 19 Sep 2026: S3's answer for a
+#: file that does not exist.
+S3_MISSING = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    "<Error><Code>AccessDenied</Code><Message>Access Denied</Message>"
+    "<RequestId>BA3NMAW2GRMGA39C</RequestId></Error>"
+)
 
-    def __init__(self, body: str) -> None:
+
+class DailyIndexServer:
+    """Serves the fixture for 11 Sep 2026; every other day has no index.
+
+    A missing day is a 404 by default, or with ``s3=True`` the 403 that the
+    real daily-index folder sends.
+    """
+
+    def __init__(self, body: str, *, s3: bool = False) -> None:
         self.body = body
+        self.s3 = s3
         self.requests: list[str] = []
 
     def __call__(self, request: httpx.Request) -> httpx.Response:
@@ -141,6 +155,8 @@ class DailyIndexServer:
         self.requests.append(url)
         if url == daily_index_url(date(2026, 9, 11)):
             return httpx.Response(200, text=self.body)
+        if self.s3:
+            return httpx.Response(403, text=S3_MISSING, headers={"content-type": "application/xml"})
         return httpx.Response(404)
 
 
@@ -152,12 +168,32 @@ def make_client(tmp_path: Path, server: DailyIndexServer) -> EdgarClient:
 
 
 def test_walk_skips_days_with_no_index(fixtures: Path, tmp_path: Path) -> None:
-    """Weekends and holidays 404. That is not an error."""
+    """A weekday with no index is a holiday. That is not an error."""
     server = DailyIndexServer((fixtures / "form.20260911.idx").read_text())
     with make_client(tmp_path, server) as client:
-        entries = list(walk_daily(client, date(2026, 9, 9), date(2026, 9, 13)))
-    assert len(server.requests) == 5
+        entries = list(walk_daily(client, date(2026, 9, 9), date(2026, 9, 11)))
+    assert len(server.requests) == 3
     assert len(entries) == 19  # forms 3 and 4 and 4/A only
+
+
+def test_walk_skips_a_missing_index_the_way_s3_reports_it(fixtures: Path, tmp_path: Path) -> None:
+    """The real archive says 403 AccessDenied, not 404, for a day with no index."""
+    server = DailyIndexServer((fixtures / "form.20260911.idx").read_text(), s3=True)
+    with make_client(tmp_path, server) as client:
+        entries = list(walk_daily(client, date(2026, 9, 9), date(2026, 9, 11)))
+    assert len(server.requests) == 3
+    assert len(entries) == 19
+
+
+def test_walk_does_not_ask_for_weekends(fixtures: Path, tmp_path: Path) -> None:
+    server = DailyIndexServer((fixtures / "form.20260911.idx").read_text())
+    with make_client(tmp_path, server) as client:
+        # Friday 11 Sep to Monday 14 Sep 2026.
+        list(walk_daily(client, date(2026, 9, 11), date(2026, 9, 14)))
+    assert server.requests == [
+        daily_index_url(date(2026, 9, 11)),
+        daily_index_url(date(2026, 9, 14)),
+    ]
 
 
 def test_walk_filters_on_exact_form_type(fixtures: Path, tmp_path: Path) -> None:

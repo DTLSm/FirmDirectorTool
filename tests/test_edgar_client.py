@@ -234,12 +234,31 @@ def test_403_is_terminal(tmp_path: Path) -> None:
 
 
 def test_404_is_terminal_and_distinguishable(tmp_path: Path) -> None:
-    """walk_daily relies on catching exactly this for weekends and holidays."""
+    """walk_daily relies on catching exactly this for holidays."""
     script = Script(fail(404))
     client, _ = make_client(tmp_path, script)
     with client, pytest.raises(NotFoundError):
         client.get_bytes(URL)
     assert len(script.requests) == 1
+
+
+def test_s3s_403_for_a_missing_file_is_not_found(tmp_path: Path) -> None:
+    """As the real daily-index folder answered for Saturday 19 Sep 2026."""
+    body = b"<?xml version='1.0'?><Error><Code>AccessDenied</Code></Error>"
+    script = Script((403, body, {"content-type": "application/xml"}))
+    client, _ = make_client(tmp_path, script)
+    with client, pytest.raises(NotFoundError, match="S3"):
+        client.get_bytes(URL)
+    assert len(script.requests) == 1
+
+
+def test_a_403_page_from_the_sec_is_still_a_block(tmp_path: Path) -> None:
+    """Treating a real block as a missing file would mark whole days done, empty."""
+    body = b"<html><body>Your Request Originates from an Undeclared Automated Tool</body></html>"
+    script = Script((403, body, {"content-type": "text/html"}))
+    client, _ = make_client(tmp_path, script)
+    with client, pytest.raises(BlockedError):
+        client.get_bytes(URL)
 
 
 def test_other_client_errors_raise(tmp_path: Path) -> None:

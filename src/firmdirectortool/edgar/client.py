@@ -52,6 +52,11 @@ SEC_RATE_LIMIT = 10.0
 #: Statuses worth trying again. 403 is excluded on purpose: see :class:`BlockedError`.
 RETRYABLE_STATUSES = frozenset({429, 500, 502, 503, 504})
 
+#: The daily-index folder is served from Amazon S3, which answers a request for
+#: a file that does not exist with a 403 carrying this XML error, not a 404.
+#: The SEC's own blocks are HTML pages and never contain it.
+S3_MISSING_FILE = b"<Code>AccessDenied</Code>"
+
 
 @dataclass(frozen=True)
 class ClientConfig:
@@ -300,6 +305,8 @@ class EdgarClient:
         # terminal status, or a retryable one with the budget spent or a
         # Retry-After too long to wait out.
         status = response.status_code
+        if status == 403 and S3_MISSING_FILE in response.content:
+            raise NotFoundError(status, url, f"HTTP 403 AccessDenied from S3: no file at {url}")
         if status == 403:
             raise BlockedError(url)
         if status == 404:

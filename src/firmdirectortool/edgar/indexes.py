@@ -213,10 +213,11 @@ def walk_daily(
 
     Walks day by day. Points to get right:
 
-    * A missing daily index (:class:`~.errors.NotFoundError`) is a weekend or a
-      holiday — skip it and carry on. Any other error propagates: a 503 that
-      survived the client's retries means the run should fail loudly and be
-      retried later, not quietly produce a gap.
+    * Weekends are not requested at all. A missing weekday index
+      (:class:`~.errors.NotFoundError`) is a holiday — skip it and carry on.
+      Any other error propagates: a 503 that survived the client's retries
+      means the run should fail loudly and be retried later, not quietly
+      produce a gap.
     * Pass ``use_cache=False`` for ``today``'s index. The file is still being
       appended to; a cached copy from this morning is silent data loss. Earlier
       days are immutable and should come from cache. ``today`` is a parameter
@@ -236,13 +237,16 @@ def walk_daily(
     today = date.today() if today is None else today
     day = start
     while day <= end:
-        try:
-            text = client.get_text(daily_index_url(day), use_cache=day != today)
-        except NotFoundError:
-            text = ""
-        for entry in parse_form_idx(text):
-            if entry.form_type in wanted:
-                yield entry
+        # EDGAR accepts no filings on Saturdays and Sundays (weekday 5 and 6),
+        # so there is no index to ask for.
+        if day.weekday() < 5:
+            try:
+                text = client.get_text(daily_index_url(day), use_cache=day != today)
+            except NotFoundError:
+                text = ""
+            for entry in parse_form_idx(text):
+                if entry.form_type in wanted:
+                    yield entry
         day += timedelta(days=1)
 
 

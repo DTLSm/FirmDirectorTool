@@ -25,7 +25,11 @@ class EdgarHTTPError(EdgarError):
 
 
 class NotFoundError(EdgarHTTPError):
-    """404. Expected for daily index files on weekends and market holidays."""
+    """The file does not exist. Expected for daily index files on market holidays.
+
+    Usually a 404. For the daily-index folder, which is served from Amazon S3,
+    it is a 403 with S3's ``AccessDenied`` XML: see ``S3_MISSING_FILE``.
+    """
 
 
 class RateLimitError(EdgarHTTPError):
