@@ -21,8 +21,10 @@ What the job deliberately does *not* do:
 * It does not stop on a bad filing. A filing that cannot be parsed is recorded
   as such and the run carries on; the report says how many there were, and the
   caller decides whether that number is alarming. One malformed document in
-  two thousand must not lose the other 1,999 — but see the open question in
-  :func:`ingest_window`.
+  two thousand must not lose the other 1,999. The entry point exits 0 either
+  way; a threshold for failing a run belongs to the Slice 3 CronJob, where
+  "fail the job" has a meaning. After a parser fix, :func:`retry_errors`
+  processes the recorded errors again.
 * It does not decide what an amendment means. A ``4/A`` is stored as a
   filing with ``is_amendment`` set. Whether it supersedes the original is a
   question about board membership, and belongs in the graph layer.
@@ -41,6 +43,7 @@ from firmdirectortool.edgar import (
     OWNERSHIP_FORMS,
     EdgarClient,
     IndexEntry,
+    NotFoundError,
     ParseError,
     extract_ownership_xml,
     parse_ownership_document,
@@ -92,12 +95,24 @@ def process_accession(
 ) -> Outcome:
 
     # A parse error is not final: after a parser fix, the same filing may
-    # parse. Stored and no-XML filings would come out the same again.
+    # parse. Stored, no-XML and missing filings would come out the same again.
     ledgerentry = store.ledger(accession)
     if ledgerentry is not None and ledgerentry.outcome is not Outcome.PARSE_ERROR:
         return Outcome.SKIPPED
 
-    text = client.get_text(lines[0].url)
+    try:
+        text = client.get_text(lines[0].url)
+    except NotFoundError:
+        # Indexed, then removed from the archive. Every other fetch error
+        # still stops the run.
+        entry = LedgerEntry(
+            accession=accession,
+            outcome=Outcome.MISSING,
+            date_filed=lines[0].date_filed,
+            filer_ciks=frozenset(line.cik for line in lines),
+        )
+        store.record(entry, None)
+        return Outcome.MISSING
     try:
         xml = extract_ownership_xml(text, accession=accession)
     except ParseError:

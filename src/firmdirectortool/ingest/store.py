@@ -50,6 +50,10 @@ class Outcome(StrEnum):
     NO_XML = "no_xml"
     #: Fetched, XML found, but it could not be understood. Worth looking at.
     PARSE_ERROR = "parse_error"
+    #: Listed in the daily index, but the archive has no such file (404). The
+    #: SEC removes filings now and then; the index, written on the day, still
+    #: lists them.
+    MISSING = "missing"
     #: Already in the ledger from an earlier run; nothing was fetched.
     SKIPPED = "skipped"
 

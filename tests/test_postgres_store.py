@@ -112,3 +112,11 @@ def test_entries_with_finds_one_outcome_oldest_first(db):
         store.record(entry, None)
     assert store.entries_with(Outcome.PARSE_ERROR) == [early, late]
     assert store.entries_with(Outcome.STORED) == []
+
+
+def test_a_missing_filing_can_be_recorded(db):
+    """Needs migration 0002: 0001 allowed only three outcomes."""
+    store = PostgresStore(db)
+    entry = LedgerEntry(CHIME, Outcome.MISSING, date(2026, 2, 4), frozenset({2085187, 1891061}))
+    store.record(entry, None)
+    assert store.ledger(CHIME) == entry
