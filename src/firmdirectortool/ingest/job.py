@@ -43,6 +43,7 @@ from firmdirectortool.edgar import (
     OWNERSHIP_FORMS,
     EdgarClient,
     IndexEntry,
+    NotFoundError,
     ParseError,
     extract_ownership_xml,
     parse_ownership_document,
@@ -94,12 +95,24 @@ def process_accession(
 ) -> Outcome:
 
     # A parse error is not final: after a parser fix, the same filing may
-    # parse. Stored and no-XML filings would come out the same again.
+    # parse. Stored, no-XML and missing filings would come out the same again.
     ledgerentry = store.ledger(accession)
     if ledgerentry is not None and ledgerentry.outcome is not Outcome.PARSE_ERROR:
         return Outcome.SKIPPED
 
-    text = client.get_text(lines[0].url)
+    try:
+        text = client.get_text(lines[0].url)
+    except NotFoundError:
+        # Indexed, then removed from the archive. Every other fetch error
+        # still stops the run.
+        entry = LedgerEntry(
+            accession=accession,
+            outcome=Outcome.MISSING,
+            date_filed=lines[0].date_filed,
+            filer_ciks=frozenset(line.cik for line in lines),
+        )
+        store.record(entry, None)
+        return Outcome.MISSING
     try:
         xml = extract_ownership_xml(text, accession=accession)
     except ParseError:

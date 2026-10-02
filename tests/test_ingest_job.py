@@ -54,6 +54,7 @@ class FixtureEdgar:
         self.requests: list[str] = []
         self.broken: set[str] = set()  # accessions to serve with the XML gutted
         self.failing: set[str] = set()  # accessions to answer with a 500
+        self.missing: set[str] = set()  # accessions to answer with a 404
 
     def __call__(self, request: httpx.Request) -> httpx.Response:
         url = str(request.url)
@@ -64,6 +65,8 @@ class FixtureEdgar:
             if url.endswith(f"/{accession}.txt"):
                 if accession in self.failing:
                     return httpx.Response(500)
+                if accession in self.missing:
+                    return httpx.Response(404)
                 body = (self.fixtures / f"{stem}.txt").read_text()
                 if accession in self.broken:
                     body = body.replace("ownershipDocument", "somethingElse")
@@ -177,6 +180,23 @@ def test_process_records_a_submission_with_no_xml(
     assert store.filing(NWPX) is None
 
 
+def test_process_records_a_filing_the_archive_no_longer_has(
+    client: EdgarClient, edgar: FixtureEdgar, day_lines: list[IndexEntry]
+) -> None:
+    """As 0001891061-26-000004: in the index for 4 Feb 2026, 404 from the archive."""
+    edgar.missing.add(NWPX)
+    store = MemoryStore()
+    lines = group_by_accession(day_lines)[NWPX]
+    with client:
+        assert process_accession(client, store, NWPX, lines) is Outcome.MISSING
+        # Final, like stored: a rerun does not ask again.
+        assert process_accession(client, store, NWPX, lines) is Outcome.SKIPPED
+    entry = store.ledger(NWPX)
+    assert entry is not None and entry.outcome is Outcome.MISSING
+    assert store.filing(NWPX) is None
+    assert len(edgar.filing_requests) == 1
+
+
 def test_process_lets_a_server_error_propagate(
     client: EdgarClient, edgar: FixtureEdgar, day_lines: list[IndexEntry]
 ) -> None:
@@ -246,6 +266,15 @@ def test_a_bad_filing_does_not_stop_the_run(client: EdgarClient, edgar: FixtureE
     with client:
         report = ingest_window(client, store, DAY, DAY, today=date(2026, 9, 15))
     assert report.counts == {Outcome.STORED: 4, Outcome.NO_XML: 1}
+    assert store.day_done(DAY)
+
+
+def test_a_missing_filing_does_not_stop_the_run(client: EdgarClient, edgar: FixtureEdgar) -> None:
+    edgar.missing.add(NWPX)
+    store = MemoryStore()
+    with client:
+        report = ingest_window(client, store, DAY, DAY, today=date(2026, 9, 15))
+    assert report.counts == {Outcome.STORED: 4, Outcome.MISSING: 1}
     assert store.day_done(DAY)
 
 
